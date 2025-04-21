@@ -245,7 +245,7 @@
 
                 <div class="list-product hide-product-sold grid lg:grid-cols-3 grid-cols-2 sm:gap-[30px] gap-[20px] mt-7" data-item="9">
                     @foreach ($products as $product)
-                    <div data-item="{{ $product->id }}" class="product-item grid-type">
+                    <div data-item="{{ $product->slug }}" class="product-item grid-type">
                         <div class="product-main cursor-pointer block" data-item="22">
                             <div class="product-thumb bg-white relative overflow-hidden rounded-2xl">
                                 <div class="product-tag text-button-uppercase text-white bg-red px-3 py-0.5 inline-block rounded-full absolute top-3 left-3 z-[1]">Sale</div>

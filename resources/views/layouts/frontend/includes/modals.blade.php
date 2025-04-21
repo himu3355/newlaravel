@@ -33,8 +33,8 @@
                                 </div>
                             </div>
                             <div class="product-img w-full h-full aspect-[3/4]">
-                                <img class="w-full h-full object-cover duration-700" src="./assets/images/product/1000x1000.png" alt="img" />
-                                <img class="w-full h-full object-cover duration-700" src="./assets/images/product/1000x1000.png" alt="img" />
+                                <img class="w-full h-full object-cover duration-700" src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" />
+                                <img class="w-full h-full object-cover duration-700" src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" />
                             </div>
                             <div class="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
                                 <div class="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-full duration-300 bg-white hover:bg-black hover:text-white">Quick View</div>
@@ -97,8 +97,8 @@
                                 </div>
                             </div>
                             <div class="product-img w-full h-full aspect-[3/4]">
-                                <img class="w-full h-full object-cover duration-700" src="./assets/images/product/1000x1000.png" alt="img" />
-                                <img class="w-full h-full object-cover duration-700" src="./assets/images/product/1000x1000.png" alt="img" />
+                                <img class="w-full h-full object-cover duration-700" src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" />
+                                <img class="w-full h-full object-cover duration-700" src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" />
                             </div>
                             <div class="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
                                 <div class="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-full duration-300 bg-white hover:bg-black hover:text-white">Quick View</div>
@@ -161,8 +161,8 @@
                                 </div>
                             </div>
                             <div class="product-img w-full h-full aspect-[3/4]">
-                                <img class="w-full h-full object-cover duration-700" src="./assets/images/product/1000x1000.png" alt="img" />
-                                <img class="w-full h-full object-cover duration-700" src="./assets/images/product/1000x1000.png" alt="img" />
+                                <img class="w-full h-full object-cover duration-700" src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" />
+                                <img class="w-full h-full object-cover duration-700" src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" />
                             </div>
                             <div class="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
                                 <div class="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-full duration-300 bg-white hover:bg-black hover:text-white">Quick View</div>
@@ -225,8 +225,8 @@
                                 </div>
                             </div>
                             <div class="product-img w-full h-full aspect-[3/4]">
-                                <img class="w-full h-full object-cover duration-700" src="./assets/images/product/1000x1000.png" alt="img" />
-                                <img class="w-full h-full object-cover duration-700" src="./assets/images/product/1000x1000.png" alt="img" />
+                                <img class="w-full h-full object-cover duration-700" src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" />
+                                <img class="w-full h-full object-cover duration-700" src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" />
                             </div>
                             <div class="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
                                 <div class="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-full duration-300 bg-white hover:bg-black hover:text-white">Quick View</div>
@@ -301,7 +301,7 @@
                 <div class="product-item item py-5 flex items-center justify-between gap-3 border-b border-line" data-item="1">
                     <div class="infor flex items-center gap-5">
                         <div class="bg-img">
-                            <img src="./assets/images/product/1000x1000.png" alt="img" class="w-[100px] aspect-square flex-shrink-0 rounded-lg" />
+                            <img src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" class="w-[100px] aspect-square flex-shrink-0 rounded-lg" />
                         </div>
                         <div class="">
                             <div class="name text-button">Faux-leather trousers</div>
@@ -318,7 +318,7 @@
                 <div class="product-item item py-5 flex items-center justify-between gap-3 border-b border-line" data-item="2">
                     <div class="infor flex items-center gap-5">
                         <div class="bg-img">
-                            <img src="./assets/images/product/1000x1000.png" alt="img" class="w-[100px] aspect-square flex-shrink-0 rounded-lg" />
+                            <img src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" class="w-[100px] aspect-square flex-shrink-0 rounded-lg" />
                         </div>
                         <div class="">
                             <div class="name text-button">Faux-leather trousers</div>
@@ -335,7 +335,7 @@
                 <div class="product-item item py-5 flex items-center justify-between gap-3 border-b border-line" data-item="3">
                     <div class="infor flex items-center gap-5">
                         <div class="bg-img">
-                            <img src="./assets/images/product/1000x1000.png" alt="img" class="w-[100px] aspect-square flex-shrink-0 rounded-lg" />
+                            <img src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" class="w-[100px] aspect-square flex-shrink-0 rounded-lg" />
                         </div>
                         <div class="">
                             <div class="name text-button">Faux-leather trousers</div>
@@ -352,7 +352,7 @@
                 <div class="product-item item py-5 flex items-center justify-between gap-3" data-item="4">
                     <div class="infor flex items-center gap-5">
                         <div class="bg-img">
-                            <img src="./assets/images/product/1000x1000.png" alt="img" class="w-[100px] aspect-square flex-shrink-0 rounded-lg" />
+                            <img src="{{ asset('assets/images/product/1000x1000.png') }}" alt="img" class="w-[100px] aspect-square flex-shrink-0 rounded-lg" />
                         </div>
                         <div class="">
                             <div class="name text-button">Faux-leather trousers</div>
@@ -625,16 +625,16 @@
             <div class="left lg:w-[388px] md:w-[300px] flex-shrink-0 px-6">
                 <div class="list-img max-md:flex items-center gap-4">
                     <div class="bg-img w-full aspect-[3/4] max-md:w-[150px] max-md:flex-shrink-0 rounded-[20px] overflow-hidden md:mt-6">
-                        <img src="./assets/images/product/1000x1000.png" alt="item" class="w-full h-full object-cover" />
+                        <img src="{{ asset('assets/images/product/1000x1000.png') }}" alt="item" class="w-full h-full object-cover" />
                     </div>
                     <div class="bg-img w-full aspect-[3/4] max-md:w-[150px] max-md:flex-shrink-0 rounded-[20px] overflow-hidden md:mt-6">
-                        <img src="./assets/images/product/1000x1000.png" alt="item" class="w-full h-full object-cover" />
+                        <img src="{{ asset('assets/images/product/1000x1000.png') }}" alt="item" class="w-full h-full object-cover" />
                     </div>
                     <div class="bg-img w-full aspect-[3/4] max-md:w-[150px] max-md:flex-shrink-0 rounded-[20px] overflow-hidden md:mt-6">
-                        <img src="./assets/images/product/1000x1000.png" alt="item" class="w-full h-full object-cover" />
+                        <img src="{{ asset('assets/images/product/1000x1000.png') }}" alt="item" class="w-full h-full object-cover" />
                     </div>
                     <div class="bg-img w-full aspect-[3/4] max-md:w-[150px] max-md:flex-shrink-0 rounded-[20px] overflow-hidden md:mt-6">
-                        <img src="./assets/images/product/1000x1000.png" alt="item" class="w-full h-full object-cover" />
+                        <img src="{{ asset('assets/images/product/1000x1000.png') }}" alt="item" class="w-full h-full object-cover" />
                     </div>
                 </div>
             </div>
@@ -685,15 +685,15 @@
                             <div class="text-title">Colors: <span class="text-title color"></span></div>
                             <div class="list-color flex items-center gap-2 flex-wrap mt-3">
                                 <div class="color-item w-12 h-12 rounded-xl duration-300 relative active">
-                                    <img src="./assets/images/product/color/48x48.png" alt="color" class="rounded-xl" />
+                                    <img src="{{ asset('assets/images/product/color/48x48.png') }}" alt="color" class="rounded-xl" />
                                     <div class="tag-action bg-black text-white caption2 capitalize px-1.5 py-0.5 rounded-sm">blue</div>
                                 </div>
                                 <div class="color-item w-12 h-12 rounded-xl duration-300 relative">
-                                    <img src="./assets/images/product/color/48x48.png" alt="color" class="rounded-xl" />
+                                    <img src="{{ asset('assets/images/product/color/48x48.png') }}" alt="color" class="rounded-xl" />
                                     <div class="tag-action bg-black text-white caption2 capitalize px-1.5 py-0.5 rounded-sm">red</div>
                                 </div>
                                 <div class="color-item w-12 h-12 rounded-xl duration-300 relative">
-                                    <img src="./assets/images/product/color/48x48.png" alt="color" class="rounded-xl" />
+                                    <img src="{{ asset('assets/images/product/color/48x48.png') }}" alt="color" class="rounded-xl" />
                                     <div class="tag-action bg-black text-white caption2 capitalize px-1.5 py-0.5 rounded-sm">black</div>
                                 </div>
                             </div>
@@ -776,22 +776,22 @@
                             <div class="heading6 px-5 bg-white absolute -top-[14px] left-1/2 -translate-x-1/2 whitespace-nowrap">Guranteed safe checkout</div>
                             <div class="list grid grid-cols-6">
                                 <div class="item flex items-center justify-center lg:px-3 px-1">
-                                    <img src="./assets/images/payment/Frame-0.png" alt="payment" class="w-full" />
+                                    <img src="{{ asset('assets/images/payment/Frame-0.png') }}" alt="payment" class="w-full" />
                                 </div>
                                 <div class="item flex items-center justify-center lg:px-3 px-1">
-                                    <img src="./assets/images/payment/Frame-1.png" alt="payment" class="w-full" />
+                                    <img src="{{ asset('assets/images/payment/Frame-1.png') }}" alt="payment" class="w-full" />
                                 </div>
                                 <div class="item flex items-center justify-center lg:px-3 px-1">
-                                    <img src="./assets/images/payment/Frame-2.png" alt="payment" class="w-full" />
+                                    <img src="{{ asset('assets/images/payment/Frame-2.png') }}" alt="payment" class="w-full" />
                                 </div>
                                 <div class="item flex items-center justify-center lg:px-3 px-1">
-                                    <img src="./assets/images/payment/Frame-3.png" alt="payment" class="w-full" />
+                                    <img src="{{ asset('assets/images/payment/Frame-3.png') }}" alt="payment" class="w-full" />
                                 </div>
                                 <div class="item flex items-center justify-center lg:px-3 px-1">
-                                    <img src="./assets/images/payment/Frame-4.png" alt="payment" class="w-full" />
+                                    <img src="{{ asset('assets/images/payment/Frame-4.png') }}" alt="payment" class="w-full" />
                                 </div>
                                 <div class="item flex items-center justify-center lg:px-3 px-1">
-                                    <img src="./assets/images/payment/Frame-5.png" alt="payment" class="w-full" />
+                                    <img src="{{ asset('assets/images/payment/Frame-5.png') }}" alt="payment" class="w-full" />
                                 </div>
                             </div>
                         </div>

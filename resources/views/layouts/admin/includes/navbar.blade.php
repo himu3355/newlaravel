@@ -64,6 +64,14 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
+      <li class="nav-item">
+        <form action="{{ route('logout') }}" method="post">
+          @csrf
+          <button type="submit" class="nav-link">
+            <i class="fas fa-power-off"></i>
+          </button>
+        </form>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->

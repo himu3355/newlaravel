@@ -33,7 +33,7 @@
                     <i class="icon-category text-2xl"></i>
                 </div>
                 <div class="left flex items-center gap-16">
-                    <a href="index.html" class="flex items-center max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2">
+                    {{-- <a href="index.html" class="flex items-center max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2">
                         <div class="heading4">E-Commerce</div>
                     </a>
                     <div class="menu-main h-full max-lg:hidden">
@@ -62,6 +62,23 @@
                                         </li>
                                         <li>
                                             <a href="customer-feedbacks.html" class="link text-secondary duration-300"> Customer Feedbacks </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div> --}}
+                    <a href="{{ route('products') }}" class="flex items-center max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2">
+                        <div class="heading4">Products</div>
+                    </a>
+                    <div class="menu-main h-full max-lg:hidden">
+                        <ul class="flex items-center gap-8 h-full">
+                            <li class="h-full relative">
+                                <a href="#!" class="text-button-uppercase duration-300 h-full flex items-center justify-center active"> Pages </a>
+                                <div class="sub-menu py-3 px-5 -left-10 absolute bg-white rounded-b-xl">
+                                    <ul class="w-full">
+                                        <li>
+                                            <a href="{{ route('products') }}" class="link text-secondary duration-300"> Products </a>
                                         </li>
                                     </ul>
                                 </div>

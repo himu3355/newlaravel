@@ -1713,7 +1713,7 @@ function addEventToProductItem(products) {
       const productId = product.getAttribute("data-item");
 
       product.addEventListener("click", () => {
-        window.location.href = `product-default.html?id=${productId}`;
+        window.location.href = `product-detail/${productId}`;
       });
 
       const compareIcon = product.querySelector(".compare-btn");
@@ -1978,7 +1978,7 @@ const handleActiveColorChange = () => {
 const filterProductImg = document.querySelector('.filter-product-img')
 
 if (filterProductImg) {
-  fetch('./assets/data/Product.json')
+  fetch("http://localhost:8000/assets/data/Product.json")
     .then(response => response.json())
     .then(data => {
       const prdId = filterProductImg.querySelector('.product-infor').getAttribute('data-item')
@@ -2062,7 +2062,7 @@ const listThreeProduct = document.querySelectorAll(
 );
 
 // Fetch products from JSON file (assuming products.json)
-fetch("./assets/data/Product.json")
+  fetch("http://localhost:8000/assets/data/Product.json")
   .then((response) => response.json())
   .then((products) => {
     // Display the first 4 products

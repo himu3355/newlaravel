@@ -23,4 +23,7 @@ class Product extends Model
     public function brand(){
         return $this->hasOne(Brand::class,'id','brand_id');
     }
+    public static function getProductBySlug($slug){
+        return Product::with(['cat_info','rel_prods'])->where('slug',$slug)->first();
+    }
 }
