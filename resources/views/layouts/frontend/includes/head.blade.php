@@ -3,6 +3,7 @@
 <title>Anvogue - FAQs</title>
 <link rel="shortcut icon" href="{{ asset('assets/images/fav.png') }}" type="image/x-icon" />
 <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 <link rel="stylesheet" href="{{ asset('dist/output-scss.css') }}" />
 <link rel="stylesheet" href="{{ asset('dist/output-tailwind.css') }}" />

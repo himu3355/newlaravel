@@ -4,7 +4,7 @@
             <div class="content-footer md:py-[60px] py-10 flex justify-between flex-wrap gap-y-8">
                 <div class="company-infor basis-1/4 max-lg:basis-full pr-7">
                     <a href="index.html" class="logo inline-block">
-                        <div class="heading3 w-fit">Anvogue</div>
+                        <div class="heading3 w-fit">E-Commerce</div>
                     </a>
                     <div class="flex gap-3 mt-3">
                         <div class="flex flex-col">
@@ -13,8 +13,8 @@
                             <span class="text-button mt-3">Address:</span>
                         </div>
                         <div class="flex flex-col">
-                            <span class="">hi.avitex@gmail.com</span>
-                            <span class="mt-[14px]">1-333-345-6868</span>
+                            <span class="">hello@gmail.com</span>
+                            <span class="mt-[14px]">1-123-456-7890</span>
                             <span class="mt-3 pt-1">549 Oak St.Crystal Lake, IL 60014</span>
                         </div>
                     </div>
@@ -78,45 +78,8 @@
             </div>
             <div class="footer-bottom py-3 flex items-center justify-between gap-5 max-lg:justify-center max-lg:flex-col border-t border-line">
                 <div class="left flex items-center gap-8">
-                    <div class="copyright caption1 text-secondary">©2024 Anvogue. All Rights Reserved.</div>
+                    <div class="copyright caption1 text-secondary">©2024 All Rights Reserved.</div>
                     <div class="select-block flex items-center gap-5 max-md:hidden">
-                        <div class="choose-language flex items-center gap-1.5">
-                            <select name="language" id="chooseLanguageFooter" class="caption2 bg-transparent">
-                                <option value="English">English</option>
-                                <option value="Espana">Espana</option>
-                                <option value="France">France</option>
-                            </select>
-                            <i class="ph ph-caret-down text-xs text-[#1F1F1F]"></i>
-                        </div>
-                        <div class="choose-currency flex items-center gap-1.5">
-                            <select name="currency" id="chooseCurrencyFooter" class="caption2 bg-transparent">
-                                <option value="USD">USD</option>
-                                <option value="EUR">EUR</option>
-                                <option value="GBP">GBP</option>
-                            </select>
-                            <i class="ph ph-caret-down text-xs text-[#1F1F1F]"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="right flex items-center gap-2">
-                    <div class="caption1 text-secondary">Payment:</div>
-                    <div class="payment-img">
-                        <img src="./assets/images/payment/Frame-0.png" alt="payment" class="w-9" />
-                    </div>
-                    <div class="payment-img">
-                        <img src="./assets/images/payment/Frame-1.png" alt="payment" class="w-9" />
-                    </div>
-                    <div class="payment-img">
-                        <img src="./assets/images/payment/Frame-2.png" alt="payment" class="w-9" />
-                    </div>
-                    <div class="payment-img">
-                        <img src="./assets/images/payment/Frame-3.png" alt="payment" class="w-9" />
-                    </div>
-                    <div class="payment-img">
-                        <img src="./assets/images/payment/Frame-4.png" alt="payment" class="w-9" />
-                    </div>
-                    <div class="payment-img">
-                        <img src="./assets/images/payment/Frame-5.png" alt="payment" class="w-9" />
                     </div>
                 </div>
             </div>

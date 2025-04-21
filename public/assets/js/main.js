@@ -1866,6 +1866,8 @@ function addEventToProductItem(products) {
             // If prd existed in cart
             openModalCart();
           } else {
+            console.log(products);
+
             // If prd not exist in cart, add it to cart
             const productToAdd = products?.find((item) => item.id === productId);
             if (productToAdd) {
