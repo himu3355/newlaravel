@@ -23,7 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware('auth')->group(function () {
 
-    Route::group(['middleware' => ['role:supper-admin|admin']], function () {
+    Route::group(['middleware' => ['role:supper-admin|Admin']], function () {
         Route::resource('/admin/categories', CategoryController::class);
         Route::resource('/admin/brand', BrandController::class);
         Route::resource('/admin/product', ProductController::class);

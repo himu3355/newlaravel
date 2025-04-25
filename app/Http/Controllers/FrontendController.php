@@ -57,7 +57,6 @@ class FrontendController extends Controller
             $products=$products->where('status','active')->paginate(6);
         }
         // Sort by name , price, category
-
         return view('frontend.pages.products',compact(['products','recent_products']));
     }
 

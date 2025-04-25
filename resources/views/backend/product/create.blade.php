@@ -78,7 +78,7 @@
                 <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="size">Size</label>
                 <select name="size[]" class="form-control selectpicker" multiple data-live-search="true">
                     <option value="">--Select any size--</option>
@@ -87,7 +87,7 @@
                     <option value="L">Large (L)</option>
                     <option value="XL">Extra Large (XL)</option>
                 </select>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label for="brand_id">Brand</label>

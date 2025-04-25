@@ -82,7 +82,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="filter-size pb-8 border-b border-line mt-8">
+                <!-- <div class="filter-size pb-8 border-b border-line mt-8">
                     <div class="heading6">Size</div>
                     <div class="list-size flex items-center flex-wrap gap-3 gap-y-4 mt-4">
                         <div class="size-item text-button w-[44px] h-[44px] flex items-center justify-center rounded-full border border-line" data-item="XS">XS</div>
@@ -93,7 +93,7 @@
                         <div class="size-item text-button w-[44px] h-[44px] flex items-center justify-center rounded-full border border-line" data-item="2XL">2XL</div>
                         <div class="size-item text-button px-4 py-2 flex items-center justify-center rounded-full border border-line" data-item="freesize">Freesize</div>
                     </div>
-                </div>
+                </div> -->
                 <div class="filter-price pb-8 border-b border-line mt-8">
                     <div class="heading6">Price Range</div>
                     <div class="tow-bar-block mt-5">

@@ -14,14 +14,9 @@
                             class="swiper mySwiper2 rounded-2xl overflow-hidden swiper-initialized swiper-horizontal swiper-backface-hidden">
                             <div class="swiper-wrapper" id="swiper-wrapper-b1035ab407f1664e" aria-live="polite">
                                 <!--  -->
-                                @for ($fd = 1; $fd >= count($photo) $fd++)
-                                  
-                                <div class="swiper-slide popup-link swiper-slide-active" style="width: 453px;" role="group"
-                                    aria-label="{{ $fd }} / {{ count($photo) }}">
-                                    <img src="{{$photo[$fd-1]}}" alt="img"
-                                        class="w-full aspect-[3/4] object-cover">
-                                </div>
-                                @endfor
+                            @for ($df = 1; $df > count($photo); $df++)
+                                {{ $df }}
+                            @endfor
                             </div>
                             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                         </div>
