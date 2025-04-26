@@ -53,7 +53,7 @@ let typePage = classes[1];
 
 
 if (productDetail) {
-    fetch("http://localhost:8000/assets/data/Product.json")
+    fetch(window.APP_URL+"assets/data/Product.json")
         .then(response => response.json())
         .then(data => {
             let productMain = data.find(product => product.id === productId);
@@ -87,33 +87,33 @@ if (productDetail) {
             const listImgMain = productDetail.querySelector('.featured-product .list-img .popup-img .swiper-wrapper')
             const popupImg = productDetail.querySelector('.featured-product .list-img .popup-img')
 
-            if (listImg2 && listImg) {
-                productMain.images.map(item => {
-                    const imgItem = document.createElement('div')
-                    imgItem.classList.add('swiper-slide', 'popup-link')
-                    imgItem.innerHTML = `
-                        <img src=${item} alt='img' class='w-full aspect-[3/4] object-cover' />
-                        
-                    `
-                    const imgItemClone = imgItem.cloneNode(true) // Copy imgItem
-                    const imgItemClone2 = imgItem.cloneNode(true) // Copy imgItem
-                    imgItemClone.classList.remove('popup-link')
+            // if (listImg2 && listImg) {
+            //     productMain.images.map(item => {
+            //         const imgItem = document.createElement('div')
+            //         imgItem.classList.add('swiper-slide', 'popup-link')
+            //         imgItem.innerHTML = `
+            //             <img src=${item} alt='img' class='w-full aspect-[3/4] object-cover' />
 
-                    listImg2.appendChild(imgItem)
-                    listImg.appendChild(imgItemClone)
-                    listImgMain.appendChild(imgItemClone2)
+            //         `
+            //         const imgItemClone = imgItem.cloneNode(true) // Copy imgItem
+            //         const imgItemClone2 = imgItem.cloneNode(true) // Copy imgItem
+            //         imgItemClone.classList.remove('popup-link')
 
-                    const slides = document.querySelectorAll('.mySwiper .swiper-slide')
-                    slides[0].classList.add('swiper-slide-thumb-active')
+            //         listImg2.appendChild(imgItem)
+            //         listImg.appendChild(imgItemClone)
+            //         listImgMain.appendChild(imgItemClone2)
 
-                    slides.forEach((img, index) => {
-                        img.addEventListener('click', () => {
-                            // Chuyển swiper 2 đến vị trí tương ứng với ảnh được click trong swiper 1
-                            swiper2.slideTo(index);
-                        });
-                    });
-                })
-            }
+            //         const slides = document.querySelectorAll('.mySwiper .swiper-slide')
+            //         slides[0].classList.add('swiper-slide-thumb-active')
+
+            //         slides.forEach((img, index) => {
+            //             img.addEventListener('click', () => {
+            //                 // Chuyển swiper 2 đến vị trí tương ứng với ảnh được click trong swiper 1
+            //                 swiper2.slideTo(index);
+            //             });
+            //         });
+            //     })
+            // }
 
             // list-img countdown timer
             const listImg3 = productDetail.querySelector('.featured-product.countdown-timer .list-img .list')
@@ -292,9 +292,9 @@ if (productDetail) {
 
             const listTag = productDetail.querySelector('.list-tag')
 
-            listTag.innerHTML = `
-            <a href="shop-breadcrumb1.html" class="text-secondary">${productMain.type}</a>
-            `
+            // listTag.innerHTML = `
+            // <a href="shop-breadcrumb1.html" class="text-secondary">${productMain.type}</a>
+            // `
         })
         .catch(error => console.error('Error fetching products:', error));
 }

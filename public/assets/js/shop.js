@@ -101,7 +101,7 @@ rangeInput.forEach(input => {
 
 // Function to fetch products from JSON file
 function fetchProducts() {
-    fetch('./assets/data/Product.json')
+    fetch(window.APP_URL+'/assets/data/Product.json')
         .then(response => response.json())
         .then(data => {
             productsData = data;
@@ -201,7 +201,7 @@ function fetchProducts() {
                     return true;
                 });
 
-                
+
                 // Set list filtered
                 const listFiltered = document.querySelector('.list-filtered')
 

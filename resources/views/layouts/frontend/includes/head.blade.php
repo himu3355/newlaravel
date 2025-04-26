@@ -7,5 +7,8 @@
 <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 <link rel="stylesheet" href="{{ asset('dist/output-scss.css') }}" />
 <link rel="stylesheet" href="{{ asset('dist/output-tailwind.css') }}" />
-
+<script>
+    let appUrl = "{{ rtrim(config('app.url'),'/') }}/";
+    window.APP_URL = appUrl;
+</script>
 @yield('extra-css')

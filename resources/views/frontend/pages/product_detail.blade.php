@@ -1,5 +1,33 @@
 @extends('layouts.frontend.app')
 
+
+@section('extends-header')
+    <div class="breadcrumb-product">
+        <div class="main bg-surface md:pt-[88px] pt-[70px] pb-[14px]">
+            <div class="container flex items-center justify-between flex-wrap gap-3">
+                <div class="left flex items-center gap-1">
+                    <a href="index.html" class="caption1 text-secondary2 hover:underline">Homepage</a>
+                    <i class="ph ph-caret-right text-xs text-secondary2"></i>
+                    <div class="caption1 text-secondary2">Product</div>
+                    <i class="ph ph-caret-right text-xs text-secondary2"></i>
+                    <div class="caption1 capitalize">Product Sale</div>
+                </div>
+                <div class="right flex items-center gap-3">
+                    <div
+                        class="prev-btn flex items-center cursor-pointer text-secondary hover:text-black pr-3 border-r border-line">
+                        <i class="ph ph-caret-circle-left text-2xl text-black"></i>
+                        <span class="caption1 pl-1">Previous Product</span>
+                    </div>
+                    <div class="next-btn flex items-center cursor-pointer text-secondary hover:text-black">
+                        <span class="caption1 pr-1">Next Product</span>
+                        <i class="ph ph-caret-circle-right text-2xl text-black"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     @php
         $photo = explode(',', $product_detail->photo);
@@ -10,77 +38,43 @@
             <div class="container flex justify-between gap-y-6 flex-wrap">
                 <div class="list-img md:w-1/2 md:pr-[45px] w-full flex-shrink-0">
                     <div class="sticky">
-                        <div
-                            class="swiper mySwiper2 rounded-2xl overflow-hidden swiper-initialized swiper-horizontal swiper-backface-hidden">
-                            <div class="swiper-wrapper" id="swiper-wrapper-b1035ab407f1664e" aria-live="polite">
+                        <div class="swiper mySwiper2 rounded-2xl overflow-hidden">
+                            <div class="swiper-wrapper">
                                 <!--  -->
-                            @for ($df = 1; $df > count($photo); $df++)
-                                {{ $df }}
-                            @endfor
+                                @foreach ($photo as $ppd)
+                                    <div class="swiper-slide popup-link">
+                                        <img src="{{ $ppd }}" alt="img"
+                                            class="w-full aspect-[2/4] object-cover">
+                                    </div>
+                                @endforeach
                             </div>
-                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                         </div>
-                        <div
-                            class="swiper mySwiper swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden swiper-thumbs">
-                            <div class="swiper-wrapper" id="swiper-wrapper-0049b5ab7a12bf24" aria-live="polite"
-                                style="transform: translate3d(0px, 0px, 0px);">
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
                                 <!--  -->
-                                <div class="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active swiper-slide-thumb-active"
-                                    style="width: 453px;" role="group" aria-label="1 / 4">
-                                    <img src="./assets/images/product/fashion/1-1.png" alt="img"
-                                        class="w-full aspect-[3/4] object-cover">
-                                </div>
-                                <div class="swiper-slide swiper-slide-visible swiper-slide-next" style="width: 453px;"
-                                    role="group" aria-label="2 / 4">
-                                    <img src="./assets/images/product/fashion/1-2.png" alt="img"
-                                        class="w-full aspect-[3/4] object-cover">
-                                </div>
-                                <div class="swiper-slide swiper-slide-visible" style="width: 453px;" role="group"
-                                    aria-label="3 / 4">
-                                    <img src="./assets/images/product/fashion/1-3.png" alt="img"
-                                        class="w-full aspect-[3/4] object-cover">
-                                </div>
-                                <div class="swiper-slide swiper-slide-visible" role="group" aria-label="4 / 4"
-                                    style="width: 453px;">
-                                    <img src="./assets/images/product/fashion/1-4.png" alt="img"
-                                        class="w-full aspect-[3/4] object-cover">
-                                </div>
+                                @foreach ($photo as $ppd)
+                                    <div class="swiper-slide">
+                                        <img src="{{ $ppd }}" alt="img"
+                                            class="w-full aspect-[3/4] object-cover">
+                                    </div>
+                                @endforeach
                             </div>
-                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                         </div>
                     </div>
-                    <div class="swiper popup-img swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper popup-img">
                         <span class="close-popup-btn absolute top-4 right-4 z-[2]">
                             <i class="ph ph-x text-3xl text-white"></i>
                         </span>
-                        <div class="swiper-wrapper" id="swiper-wrapper-cd6c6c3cbebf61e0" aria-live="polite">
+                        <div class="swiper-wrapper">
                             <!--  -->
-                            <div class="swiper-slide popup-link swiper-slide-active" style="width: 1043px;" role="group"
-                                aria-label="1 / 4" data-swiper-slide-index="0">
-                                <img src="./assets/images/product/fashion/1-1.png" alt="img"
-                                    class="w-full aspect-[3/4] object-cover">
-                            </div>
-                            <div class="swiper-slide popup-link swiper-slide-next" style="width: 1043px;" role="group"
-                                aria-label="2 / 4" data-swiper-slide-index="1">
-                                <img src="./assets/images/product/fashion/1-2.png" alt="img"
-                                    class="w-full aspect-[3/4] object-cover">
-                            </div>
-                            <div class="swiper-slide popup-link" style="width: 1043px;" role="group" aria-label="3 / 4"
-                                data-swiper-slide-index="2">
-                                <img src="./assets/images/product/fashion/1-3.png" alt="img"
-                                    class="w-full aspect-[3/4] object-cover">
-                            </div>
-                            <div class="swiper-slide popup-link" role="group" aria-label="4 / 4"
-                                data-swiper-slide-index="3" style="width: 1043px;">
-                                <img src="./assets/images/product/fashion/1-4.png" alt="img"
-                                    class="w-full aspect-[3/4] object-cover">
-                            </div>
+                            @foreach ($photo as $ppd)
+                                <div class="swiper-slide popup-link" style="width: 1366px;" role="group">
+                                    <img src="{{ $ppd }}" alt="img" class="w-full aspect-[3/4] object-cover">
+                                </div>
+                            @endforeach
                         </div>
-                        <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"
-                            aria-controls="swiper-wrapper-cd6c6c3cbebf61e0"></div>
-                        <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
-                            aria-controls="swiper-wrapper-cd6c6c3cbebf61e0"></div>
-                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
                 </div>
                 <div class="product-infor md:w-1/2 w-full lg:pl-[15px] md:pl-2">
@@ -159,8 +153,7 @@
             <div class="container">
                 <div class="flex items-center justify-center w-full">
                     <div class="menu-tab flex items-center md:gap-[60px] gap-8">
-                        <div
-                            class="tab-item heading5 has-line-before text-secondary2 hover:text-black duration-300 active">
+                        <div class="tab-item heading5 has-line-before text-secondary2 hover:text-black duration-300 active">
                             Description</div>
                         <div class="tab-item heading5 has-line-before text-secondary2 hover:text-black duration-300">
                             Specifications</div>

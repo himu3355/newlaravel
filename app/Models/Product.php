@@ -26,4 +26,23 @@ class Product extends Model
     public static function getProductBySlug($slug){
         return Product::with(['cat_info'])->where('slug',$slug)->first();
     }
+
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class);
+    }
+
+    public function getAttributesByCategory($categorySlug)
+    {
+        return $this->attributes()
+            ->whereHas('category', function ($query) use ($categorySlug) {
+                $query->where('slug', $categorySlug);
+            })
+            ->get();
+    }
+
+    public function hasAttribute($attributeId)
+    {
+        return $this->attributes()->where('attributes.id', $attributeId)->exists();
+    }
 }

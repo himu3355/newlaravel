@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RolesAndParmissionController;
 use App\Http\Controllers\Admin\ShippingController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\AttributeCategoryController;
+use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,7 +44,25 @@ Route::middleware('auth')->group(function () {
         Route::get('/file-manager', function () {
             return view('backend.layouts.file-manager');
         })->name('file-manager');
+        Route::prefix('admin')->name('admin.')->group(function () {
 
+            // Attributes
+            Route::get('attributes', [AttributeController::class, 'index'])->name('attributes.index');
+
+            // Attribute Categories
+            Route::get('attributes/categories/create', [AttributeCategoryController::class, 'create'])->name('attributes.categories.create');
+            Route::post('attributes/categories', [AttributeCategoryController::class, 'store'])->name('attributes.categories.store');
+            Route::get('attributes/categories/{category}/edit', [AttributeCategoryController::class, 'edit'])->name('attributes.categories.edit');
+            Route::put('attributes/categories/{category}', [AttributeCategoryController::class, 'update'])->name('attributes.categories.update');
+            Route::delete('attributes/categories/{category}', [AttributeCategoryController::class, 'destroy'])->name('attributes.categories.destroy');
+
+            // Attributes within Categories
+            Route::get('attributes/categories/{category}/attributes/create', [AttributeController::class, 'createAttribute'])->name('attributes.create');
+            Route::post('attributes/categories/{category}/attributes', [AttributeController::class, 'storeAttribute'])->name('attributes.store');
+            Route::get('attributes/{attribute}/edit', [AttributeController::class, 'editAttribute'])->name('attributes.edit');
+            Route::put('attributes/{attribute}', [AttributeController::class, 'updateAttribute'])->name('attributes.update');
+            Route::delete('attributes/{attribute}', [AttributeController::class, 'destroyAttribute'])->name('attributes.destroy');
+        });
     });
 });
 Route::get('products', [FrontendController::class, 'productList'])->name('products');
