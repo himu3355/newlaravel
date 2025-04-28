@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RolesAndParmissionController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\ShippingController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\AttributeCategoryController;
@@ -67,6 +68,10 @@ Route::middleware('auth')->group(function () {
             Route::get('attributes/{attribute}/edit', [AttributeController::class, 'editAttribute'])->name('attributes.edit');
             Route::put('attributes/{attribute}', [AttributeController::class, 'updateAttribute'])->name('attributes.update');
             Route::delete('attributes/{attribute}', [AttributeController::class, 'destroyAttribute'])->name('attributes.destroy');
+            
+        // Settings
+            Route::get('settings', [SettingsController::class, 'settings'])->name('settings');
+            Route::post('setting/update', [SettingsController::class, 'settingsUpdate'])->name('settings.update');
         });
     });
 });

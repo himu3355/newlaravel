@@ -1,6 +1,9 @@
 <div id="footer" class="footer">
     <div class="footer-main bg-surface">
         <div class="container">
+            @php
+                $settings=DB::table('settings')->get();
+            @endphp
             <div class="content-footer md:py-[60px] py-10 flex justify-between flex-wrap gap-y-8">
                 <div class="company-infor basis-1/4 max-lg:basis-full pr-7">
                     <a href="index.html" class="logo inline-block">
@@ -13,15 +16,15 @@
                             <span class="text-button mt-3">Address:</span>
                         </div>
                         <div class="flex flex-col">
-                            <span class="">hello@gmail.com</span>
-                            <span class="mt-[14px]">1-123-456-7890</span>
-                            <span class="mt-3 pt-1">549 Oak St.Crystal Lake, IL 60014</span>
+                            <span class="">@foreach($settings as $data) {{$data->email}} @endforeach</span>
+                            <span class="mt-[14px]">@foreach($settings as $data) {{$data->address}} @endforeach</span>
+                            <span class="mt-3 pt-1">@foreach($settings as $data) {{$data->phone}} @endforeach</span>
                         </div>
                     </div>
                 </div>
                 <div class="right-content flex flex-wrap gap-y-8 basis-3/4 max-lg:basis-full">
                     <div class="list-nav flex justify-between basis-2/3 max-md:basis-full gap-4">
-                        <div class="item flex flex-col basis-1/3">
+                        <div class="item flex flex-col basis-1/2">
                             <div class="text-button-uppercase pb-3">Infomation</div>
                             <a class="caption1 has-line-before duration-300 w-fit" href="contact.html">Contact us </a>
                             <a class="caption1 has-line-before duration-300 w-fit pt-2" href="#!"> Career </a>
@@ -29,15 +32,7 @@
                             <a class="caption1 has-line-before duration-300 w-fit pt-2" href="order-tracking.html"> Order & Returns</a>
                             <a class="caption1 has-line-before duration-300 w-fit pt-2" href="faqs.html">FAQs </a>
                         </div>
-                        <div class="item flex flex-col basis-1/3">
-                            <div class="text-button-uppercase pb-3">Quick Shop</div>
-                            <a class="caption1 has-line-before duration-300 w-fit" href="shop-breadcrumb1.html">Women</a>
-                            <a class="caption1 has-line-before duration-300 w-fit pt-2" href="shop-breadcrumb1.html">Men </a>
-                            <a class="caption1 has-line-before duration-300 w-fit pt-2" href="shop-breadcrumb1.html">Clothes </a>
-                            <a class="caption1 has-line-before duration-300 w-fit pt-2" href="shop-breadcrumb1.html"> Accessories </a>
-                            <a class="caption1 has-line-before duration-300 w-fit pt-2" href="blog-default.html">Blog </a>
-                        </div>
-                        <div class="item flex flex-col basis-1/3">
+                        <div class="item flex flex-col basis-1/2">
                             <div class="text-button-uppercase pb-3">Customer Services</div>
                             <a class="caption1 has-line-before duration-300 w-fit" href="faqs.html">FAQs </a>
                             <a class="caption1 has-line-before duration-300 w-fit pt-2" href="faqs.html">Shipping </a>
@@ -78,7 +73,7 @@
             </div>
             <div class="footer-bottom py-3 flex items-center justify-between gap-5 max-lg:justify-center max-lg:flex-col border-t border-line">
                 <div class="left flex items-center gap-8">
-                    <div class="copyright caption1 text-secondary">©2024 All Rights Reserved.</div>
+                    <div class="copyright caption1 text-secondary">Copyright © {{date('Y')}} All Rights Reserved.</div>
                     <div class="select-block flex items-center gap-5 max-md:hidden">
                     </div>
                 </div>

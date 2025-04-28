@@ -44,7 +44,7 @@
                             @foreach ($attribCats as $attribCat)
 
                             <li class="h-full relative">
-                                <a href="#!" class="text-button-uppercase duration-300 h-full flex items-center justify-center active"> {{ $attribCat->name }} </a>
+                                <a href="#!" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> {{ $attribCat->name }} </a>
                                 <div class="sub-menu py-3 px-5 -left-10 absolute bg-white rounded-b-xl">
                                     <ul class="w-full">
                                         @foreach ($attribCat->attributes as $attribute)
@@ -58,7 +58,10 @@
                             </li>
                             @endforeach
                             <li class="h-full relative">
-                                <a href="#!" class="text-button-uppercase duration-300 h-full flex items-center justify-center active"> Pages </a>
+                                <a href="{{ route('products') }}" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> Products </a>
+                            </li>
+                            <li class="h-full relative">
+                                <a href="#!" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> Pages </a>
                                 <div class="sub-menu py-3 px-5 -left-10 absolute bg-white rounded-b-xl">
                                     <ul class="w-full">
                                         <li>
@@ -89,18 +92,18 @@
                     </div>
                 </div>
                 <div class="right flex gap-12">
-                    <div class="max-md:hidden search-icon flex items-center cursor-pointer relative">
+                    {{-- <div class="max-md:hidden search-icon flex items-center cursor-pointer relative">
                         <i class="ph-bold ph-magnifying-glass text-2xl"></i>
                         <div class="line absolute bg-line w-px h-6 -right-6"></div>
-                    </div>
+                    </div> --}}
                     <div class="list-action flex items-center gap-4">
                         <div class="user-icon flex items-center justify-center cursor-pointer">
                             <i class="ph-bold ph-user text-2xl"></i>
                             <div class="login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-small">
-                                <a href="login.html" class="button-main w-full text-center">Login</a>
+                                <a href="{{ route('login') }}" class="button-main w-full text-center">Login</a>
                                 <div class="text-secondary text-center mt-3 pb-4">
                                     Don’t have an account?
-                                    <a href="register.html" class="text-black pl-1 hover:underline">Register </a>
+                                    <a href="{{ route('register') }}" class="text-black pl-1 hover:underline">Register </a>
                                 </div>
                                 <div class="bottom pt-4 border-t border-line"></div>
                                 <a href="#!" class="body1 hover:underline">Support</a>

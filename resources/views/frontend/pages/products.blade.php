@@ -266,7 +266,8 @@
                     </div>
                 </div>
                 <div class="list-filtered flex items-center gap-3 flex-wrap"></div>
-
+                @if (count($products)>0)
+                    
                 <div class="list-product hide-product-sold grid lg:grid-cols-3 grid-cols-2 sm:gap-[30px] gap-[20px] mt-7" data-item="9">
                     @foreach ($products as $product)
                     @php
@@ -320,6 +321,9 @@
                     </div>
                     @endforeach
                 </div>
+                @else
+                No Products 
+                @endif
 
                 <div class="list-pagination w-full flex items-center gap-4 mt-10"></div>
             </div>
