@@ -33,7 +33,7 @@
                     <i class="icon-category text-2xl"></i>
                 </div>
                 <div class="left flex items-center gap-16">
-                    <a href="index.html" class="flex items-center max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2">
+                    <a href="#" class="flex items-center max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2">
                         <div class="heading4">E-Commerce</div>
                     </a>
                     @php

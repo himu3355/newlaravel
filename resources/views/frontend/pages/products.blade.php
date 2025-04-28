@@ -29,13 +29,13 @@
                         <div class="text-secondary2 capitalize">Shop</div>
                     </div>
                 </div>
-                <div class="filter-type menu-tab flex flex-wrap items-center justify-center gap-y-5 gap-8 lg:mt-[70px] mt-12 overflow-hidden">
+                {{-- <div class="filter-type menu-tab flex flex-wrap items-center justify-center gap-y-5 gap-8 lg:mt-[70px] mt-12 overflow-hidden">
                     <div class="item tab-item text-button-uppercase cursor-pointer has-line-before line-2px" data-item="t-shirt">t-shirt</div>
                     <div class="item tab-item text-button-uppercase cursor-pointer has-line-before line-2px" data-item="dress">dress</div>
                     <div class="item tab-item text-button-uppercase cursor-pointer has-line-before line-2px" data-item="top">top</div>
                     <div class="item tab-item text-button-uppercase cursor-pointer has-line-before line-2px" data-item="swimwear">swimwear</div>
                     <div class="item tab-item text-button-uppercase cursor-pointer has-line-before line-2px" data-item="shirt">shirt</div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -230,7 +230,7 @@
             <div class="list-product-block style-grid lg:w-3/4 md:w-2/3 w-full md:pl-3">
                 <div class="filter-heading flex items-center justify-between gap-5 flex-wrap">
                     <div class="left flex has-line items-center flex-wrap gap-5">
-                        <div class="choose-layout menu-tab flex items-center gap-2">
+                        {{-- <div class="choose-layout menu-tab flex items-center gap-2">
                             <div class="item tab-item style-grid three-col p-2 border border-line rounded flex items-center justify-center cursor-pointer active">
                                 <div class="flex items-center gap-0.5">
                                     <span class="w-[3px] h-4 bg-secondary2 rounded-sm"></span>
@@ -249,7 +249,7 @@
                         <div class="check-sale flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" name="filterSale" id="filter-sale" class="border-line" />
                             <label for="filter-sale" class="cation1 cursor-pointer">Show only products on sale</label>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="sort-product right flex items-center gap-3">
                         <label for="select-filter" class="caption1 capitalize">Sort by</label>
@@ -269,6 +269,10 @@
 
                 <div class="list-product hide-product-sold grid lg:grid-cols-3 grid-cols-2 sm:gap-[30px] gap-[20px] mt-7" data-item="9">
                     @foreach ($products as $product)
+                    @php
+                        $photo = explode(',', $product->photo);
+                        // dd($photo[0]);
+                    @endphp
                     <div data-item="{{ $product->slug }}" class="product-item grid-type">
                         <div class="product-main cursor-pointer block" data-item="22">
                             <div class="product-thumb bg-white relative overflow-hidden rounded-2xl">
@@ -281,7 +285,7 @@
                                     </div>
                                 </div>
                                 <div class="product-img w-full h-full aspect-[3/4]">
-                                    <img key="0" class="w-full h-full object-cover duration-700" src="{{ $product->photo }}" alt="img"><img key="1" class="w-full h-full object-cover duration-700" src="{{ $product->photo }}" alt="img">
+                                    <img key="0" class="w-full h-full object-cover duration-700" src="{{ $photo[1] }}" alt="img"><img key="1" class="w-full h-full object-cover duration-700" src="{{ $photo[0] }}" alt="img">
                                 </div>
                                 <div class="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
                                     <div class="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-full duration-300 bg-white hover:bg-black hover:text-white">

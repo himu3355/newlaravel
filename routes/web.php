@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
@@ -9,12 +10,14 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\AttributeCategoryController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\FrontendController;
+use App\Models\Banner;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
 Route::get('/', function () {
-    return view('index');
+    $banners=Banner::where('status','active')->limit(3)->orderBy('id','DESC')->get();
+    return view('index',compact(['banners']));
 });
 
 Route::get('/dashboard', function () {
@@ -25,12 +28,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware('auth')->group(function () {
 
-    Route::group(['middleware' => ['role:supper-admin|Admin']], function () {
+    Route::group(['middleware' => ['role:supper-admin|admin']], function () {
         Route::resource('/admin/categories', CategoryController::class);
         Route::resource('/admin/brand', BrandController::class);
         Route::resource('/admin/product', ProductController::class);
         Route::resource('/admin/users', UsersController::class);
         Route::resource('/admin/shipping', ShippingController::class);
+        // Banner
+        Route::resource('banner', BannerController::class);
 
         Route::get('rolesandpermission', [RolesAndParmissionController::class, 'index'])->name('rolesandpermissions.index');
         Route::post('rolesandpermission/update', [RolesAndParmissionController::class, 'update'])->name('rolespermission.update');

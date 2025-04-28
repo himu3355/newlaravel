@@ -4,24 +4,29 @@
 @section('extends-header')
 
             <!-- Slider -->
+@if(count($banners)>0)
             <div class="slider-block toys-kid 2xl:h-[760px] xl:h-[680px] lg:h-[580px] md:h-[460px] sm:h-[400px] h-[400px] w-full mt-[30px]">
                 <div class="container h-full">
                     <div class="slider-main h-full w-full">
                         <div class="slider-toys-kid h-full">
+                            
+
+                            @foreach($banners as $key=>$banner)
                             <div class="slider-item">
                                 <div class="bg-[#EBFCF5] h-full w-full relative flex max-sm:flex-col-reverse items-center lg:rounded-[40px] rounded-xl overflow-hidden">
                                     <img src="./assets/images/slider/bg-toys.png" alt="bg" class="absolute top-0 left-0 w-full h-full object-cover" />
                                     <div class="text-content sm:w-1/3 max-sm:pt-10 max-sm:pb-[40px] flex flex-col items-center justify-center z-[1]">
-                                        <div class="text-sub-display">Sale! Up To 50% Off!</div>
-                                        <div class="heading1 text-center md:mt-4 mt-2">Smart toys <br class="max-xl:hidden" />on sale</div>
+                                        <div class="text-sub-display">{{ $banner['description'] }}</div>
+                                        <div class="heading1 text-center md:mt-4 mt-2">{{ $banner->title }}</div>
                                         <a href="shop-breadcrumb-img.html" class="button-main md:mt-8 mt-3">Shop Now</a>
                                     </div>
                                     <div class="sub-img sm:w-2/3 w-full h-full sm:pl-10">
-                                        <img src="./assets/images/slider/bg-toys1.png" alt="bg-toys1" class="w-full h-full object-cover z-[1] relative" />
+                                        <img src="{{ $banner->photo }}" alt="bg-toys1" class="w-full h-full object-cover z-[1] relative" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="slider-item">
+                            @endforeach
+                            {{-- <div class="slider-item">
                                 <div class="bg-[#F4F4F4] h-full w-full relative flex max-sm:flex-col-reverse items-center lg:rounded-[40px] rounded-xl overflow-hidden">
                                     <img src="./assets/images/slider/bg-toys.png" alt="bg" class="absolute top-0 left-0 w-full h-full object-cover" />
                                     <div class="text-content sm:w-1/3 max-sm:pt-10 max-sm:pb-[40px] flex flex-col items-center justify-center z-[1]">
@@ -46,11 +51,12 @@
                                         <img src="./assets/images/slider/bg-toys3.png" alt="bg-toys3" class="w-full h-full object-cover z-[1] relative" />
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
+            @endif
 
 @endsection
 
