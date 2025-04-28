@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AttributeCategory;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -56,13 +57,41 @@ class FrontendController extends Controller
         else{
             $products=$products->where('status','active')->paginate(6);
         }
+
+        $categories = AttributeCategory::where('active', true)
+            ->where('filterable', true)
+            ->orderBy('sort_order')
+            ->with('attributes')
+            ->get();
         // Sort by name , price, category
-        return view('frontend.pages.products',compact(['products','recent_products']));
+        return view('frontend.pages.products',compact(['products','categories','recent_products']));
     }
 
     public function productDetail($slug) {
         $product_detail= Product::getProductBySlug($slug);
         // dd($product_detail);
         return view('frontend.pages.product_detail')->with('product_detail',$product_detail);
+    }
+    public function filter(Request $request) {
+        $query = Product::query()->where('status', 'active');
+
+        // Filter by attributes if any were selected
+        if ($request->has('attributes') && is_array($request['attributes'])) {
+            foreach ($request['attributes'] as $attributeId) {
+                $query->whereHas('attributes', function ($q) use ($attributeId) {
+                    $q->where('attributes.id', $attributeId);
+                });
+            }
+        }
+
+        $products = $query->paginate(12)->withQueryString();
+
+        $categories = AttributeCategory::where('active', true)
+            ->where('filterable', true)
+            ->orderBy('sort_order')
+            ->with('attributes')
+            ->get();
+        $filter_atribs = $request['attributes'];
+        return view('frontend.pages.products',compact(['products','categories','filter_atribs']));
     }
 }

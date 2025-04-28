@@ -67,7 +67,9 @@
       <li class="nav-item">
         <form action="{{ route('logout') }}" method="post">
           @csrf
-          <button type="submit" class="nav-link">
+          <button type="submit" class="nav-link" style="
+    border: none;
+    background-color: transparent;">
             <i class="fas fa-power-off"></i>
           </button>
         </form>

@@ -67,3 +67,4 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('products', [FrontendController::class, 'productList'])->name('products');
 Route::get('product-detail/{slug}', [FrontendController::class, 'productDetail'])->name('product-detail');
+Route::get('/products/filter', [FrontendController::class, 'filter'])->name('products.filter');

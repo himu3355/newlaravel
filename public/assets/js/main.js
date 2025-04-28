@@ -1713,7 +1713,7 @@ function addEventToProductItem(products) {
       const productId = product.getAttribute("data-item");
 
       product.addEventListener("click", () => {
-        window.location.href = `product-detail/${productId}`;
+        window.location.href = window.APP_URL+`product-detail/${productId}`;
       });
 
       const compareIcon = product.querySelector(".compare-btn");

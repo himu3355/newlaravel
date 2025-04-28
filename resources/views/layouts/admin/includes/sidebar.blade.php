@@ -51,7 +51,6 @@
                         <i class="nav-icon fas fa-folder-open"></i>
                         <p>
                             File Manager
-                            {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>
@@ -60,7 +59,6 @@
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Users
-                            {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>
@@ -69,7 +67,6 @@
                         <i class="nav-icon fab fa-apple"></i>
                         <p>
                             Brand
-                            {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>
@@ -78,7 +75,6 @@
                         <i class="nav-icon fas fa-clone"></i>
                         <p>
                             Category
-                            {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>
@@ -87,7 +83,14 @@
                         <i class="nav-icon fas fa-tshirt"></i>
                         <p>
                             Product
-                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.attributes.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>
+                            Attributes
                         </p>
                     </a>
                 </li>
@@ -96,7 +99,6 @@
                         <i class="nav-icon fas fa-truck"></i>
                         <p>
                             shipping
-                            {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>

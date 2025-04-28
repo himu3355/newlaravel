@@ -29,7 +29,7 @@ class Product extends Model
 
     public function attributes()
     {
-        return $this->belongsToMany(Attribute::class);
+        return $this->belongsToMany(Attribute::class, 'product_attribute');
     }
 
     public function getAttributesByCategory($categorySlug)
@@ -41,8 +41,8 @@ class Product extends Model
             ->get();
     }
 
-    public function hasAttribute($attributeId)
-    {
-        return $this->attributes()->where('attributes.id', $attributeId)->exists();
-    }
+    // public function hasAttribute($attributeId)
+    // {
+    //     return $this->attributes()->where('attributes.id', $attributeId)->exists();
+    // }
 }

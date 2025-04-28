@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AttributeCategory;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -26,7 +27,8 @@ class ProductController extends Controller
     {
         $brands = Brand::get();
         $categories = Category::where('is_parent', 1)->get();
-        return view('backend.product.create', compact('categories', 'brands'));
+        $attributesByCategory = $this->getAttributesByCategory();
+        return view('backend.product.create', compact('categories', 'brands', 'attributesByCategory'));
     }
 
     /**
@@ -49,6 +51,8 @@ class ProductController extends Controller
             'condition' => 'required|in:default,new,hot',
             'price' => 'required|numeric',
             'discount' => 'nullable|numeric',
+            'attributes' => 'nullable|array',
+            'attributes.*' => 'exists:attributes,id',
         ]);
 
         $slug = generateUniqueSlug($request->title, Product::class);
@@ -62,6 +66,11 @@ class ProductController extends Controller
         }
 
         $product = Product::create($validatedData);
+
+        // Sync attributes
+        if ($request->has('attributes')) {
+            $product->attributes()->sync($request['attributes']);
+        }
 
         $message = $product
             ? 'Product Successfully added'
@@ -90,8 +99,9 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $categories = Category::where('is_parent', 1)->get();
         $items = Product::where('id', $id)->get();
+        $attributesByCategory = $this->getAttributesByCategory();
 
-        return view('backend.product.edit', compact('product', 'brands', 'categories', 'items'));
+        return view('backend.product.edit', compact('product', 'brands', 'categories', 'items','attributesByCategory'));
     }
 
     /**
@@ -116,6 +126,8 @@ class ProductController extends Controller
             'condition' => 'required|in:default,new,hot',
             'price' => 'required|numeric',
             'discount' => 'nullable|numeric',
+            'attributes' => 'nullable|array',
+            'attributes.*' => 'exists:attributes,id',
         ]);
 
         $validatedData['is_featured'] = $request->input('is_featured', 0);
@@ -127,6 +139,9 @@ class ProductController extends Controller
         }
 
         $status = $product->update($validatedData);
+
+        // Sync attributes
+        $product->attributes()->sync($request['attributes'] ?? []);
 
         $message = $status
             ? 'Product Successfully updated'
@@ -154,5 +169,25 @@ class ProductController extends Controller
             $status ? 'success' : 'error',
             $message
         );
+    }
+
+    private function getAttributesByCategory()
+    {
+        $categories = AttributeCategory::where('active', true)
+            ->orderBy('sort_order')
+            ->with(['attributes' => function($query) {
+                $query->where('active', true)->orderBy('sort_order');
+            }])
+            ->get();
+
+        $attributesByCategory = [];
+        foreach ($categories as $category) {
+            $attributesByCategory[$category->id] = [
+                'name' => $category->name,
+                'attributes' => $category->attributes,
+            ];
+        }
+
+        return $attributesByCategory;
     }
 }
