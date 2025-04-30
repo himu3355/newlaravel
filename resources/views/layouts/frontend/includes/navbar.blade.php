@@ -78,6 +78,7 @@
                         <div class="line absolute bg-line w-px h-6 -right-6"></div>
                     </div> --}}
                     <div class="list-action flex items-center gap-4">
+                    @if (Auth::guest())
                         <div class="user-icon flex items-center justify-center cursor-pointer">
                             <i class="ph-bold ph-user text-2xl"></i>
                             <div class="login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-small">
@@ -86,10 +87,26 @@
                                     Don’t have an account?
                                     <a href="{{ route('register') }}" class="text-black pl-1 hover:underline">Register </a>
                                 </div>
-                                <div class="bottom pt-4 border-t border-line"></div>
-                                <a href="#!" class="body1 hover:underline">Support</a>
+                                <!-- <div class="bottom pt-4 border-t border-line"></div>
+                                <a href="#!" class="body1 hover:underline">Support</a> -->
                             </div>
                         </div>
+                        @else
+                        <div class="user-icon flex items-center justify-center cursor-pointer">
+                            <i class="ph-bold ph-user text-2xl"></i>
+        <form action="{{ route('logout') }}" method="post">
+          @csrf
+          <button type="submit" class="login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-small" style="
+    border: none;
+    background-color: transparent;">
+            Logout
+          </button>
+        </form>
+                            <div class="login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-small">
+                                <a href="{{ route('login') }}" class="button-main w-full text-center">Logout</a>
+                            </div>
+                        </div>
+                        @endif
                         <div class="max-md:hidden wishlist-icon flex items-center relative cursor-pointer">
                             <i class="ph-bold ph-heart text-2xl"></i>
                             <span class="quantity wishlist-quantity absolute -right-1.5 -top-1.5 text-xs text-white bg-black w-4 h-4 flex items-center justify-center rounded-full">0</span>

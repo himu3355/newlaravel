@@ -17,10 +17,10 @@ class FrontendController extends Controller
         return view('index',compact(['banners']));
     }
     function aboutus() {
-        return view('aboutus');
+        return view('frontend.pages.aboutus');
     }
     function contactus() {
-        return view('contactus');
+        return view('frontend.pages.contactus');
     }
     function contactusstore(Request $request) {
 
