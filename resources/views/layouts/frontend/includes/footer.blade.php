@@ -6,8 +6,8 @@
             @endphp
             <div class="content-footer md:py-[60px] py-10 flex justify-between flex-wrap gap-y-8">
                 <div class="company-infor basis-1/4 max-lg:basis-full pr-7">
-                    <a href="index.html" class="logo inline-block">
-                        <div class="heading3 w-fit">E-Commerce</div>
+                    <a href="{{ route('home') }}" class="logo inline-block">
+                        <div class="heading3 w-fit">Bunnys Bag</div>
                     </a>
                     <div class="flex gap-3 mt-3">
                         <div class="flex flex-col">
