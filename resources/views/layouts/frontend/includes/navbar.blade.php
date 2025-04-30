@@ -41,6 +41,9 @@
                     @endphp
                     <div class="menu-main h-full max-lg:hidden">
                         <ul class="flex items-center gap-8 h-full">
+                            <li class="h-full relative">
+                                <a href="{{ route('home') }}" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> Home </a>
+                            </li>
                             @foreach ($attribCats as $attribCat)
 
                             <li class="h-full relative">
@@ -61,32 +64,10 @@
                                 <a href="{{ route('products') }}" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> Products </a>
                             </li>
                             <li class="h-full relative">
-                                <a href="#!" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> Pages </a>
-                                <div class="sub-menu py-3 px-5 -left-10 absolute bg-white rounded-b-xl">
-                                    <ul class="w-full">
-                                        <li>
-                                            <a href="about.html" class="link text-secondary duration-300"> About Us </a>
-                                        </li>
-                                        <li>
-                                            <a href="contact.html" class="link text-secondary duration-300"> Contact Us </a>
-                                        </li>
-                                        <li>
-                                            <a href="store-list.html" class="link text-secondary duration-300"> Store List </a>
-                                        </li>
-                                        <li>
-                                            <a href="page-not-found.html" class="link text-secondary duration-300"> 404 </a>
-                                        </li>
-                                        <li>
-                                            <a href="faqs.html" class="link text-secondary duration-300 active"> FAQs </a>
-                                        </li>
-                                        <li>
-                                            <a href="coming-soon.html" class="link text-secondary duration-300"> Coming Soon </a>
-                                        </li>
-                                        <li>
-                                            <a href="customer-feedbacks.html" class="link text-secondary duration-300"> Customer Feedbacks </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <a href="#" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> About Us </a>
+                            </li>
+                            <li class="h-full relative">
+                                <a href="#" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> Contact Us </a>
                             </li>
                         </ul>
                     </div>
