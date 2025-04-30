@@ -6,6 +6,7 @@ use App\Models\AttributeCategory;
 use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\ContactUs;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,23 @@ class FrontendController extends Controller
     function home() {
         $banners=Banner::where('status','active')->limit(3)->orderBy('id','DESC')->get();
         return view('index',compact(['banners']));
+    }
+    function aboutus() {
+        return view('aboutus');
+    }
+    function contactus() {
+        return view('contactus');
+    }
+    function contactusstore(Request $request) {
+
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'message' => 'required|string',
+        ]);
+
+        $contactus = ContactUs::create($validatedData);
+        return redirect()->route('contactus')->with('success',"Your feedback submited.");
     }
     public function productList() {
         $products=Product::query();

@@ -78,3 +78,6 @@ Route::get('/', [FrontendController::class,'home'])->name('home');
 Route::get('products', [FrontendController::class, 'productList'])->name('products');
 Route::get('product-detail/{product}', [FrontendController::class, 'productDetail'])->name('product-detail');
 Route::get('/products/filter', [FrontendController::class, 'filter'])->name('products.filter');
+Route::get('/aboutus', [FrontendController::class, 'aboutus'])->name('aboutus');
+Route::get('/contactus', [FrontendController::class, 'contactus'])->name('contactus');
+Route::post('/contactus', [FrontendController::class, 'contactusstore'])->name('contactus.store');

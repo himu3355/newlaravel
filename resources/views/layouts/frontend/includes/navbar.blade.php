@@ -64,10 +64,10 @@
                                 <a href="{{ route('products') }}" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> Products </a>
                             </li>
                             <li class="h-full relative">
-                                <a href="#" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> About Us </a>
+                                <a href="{{ route('aboutus') }}" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> About Us </a>
                             </li>
                             <li class="h-full relative">
-                                <a href="#" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> Contact Us </a>
+                                <a href="{{ route('contactus') }}" class="text-button-uppercase duration-300 h-full flex items-center justify-center"> Contact Us </a>
                             </li>
                         </ul>
                     </div>
