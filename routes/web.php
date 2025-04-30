@@ -19,13 +19,13 @@ Auth::routes();
 Route::get('/', function () {
     $banners=Banner::where('status','active')->limit(3)->orderBy('id','DESC')->get();
     return view('index',compact(['banners']));
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
 
@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
             Route::get('attributes/{attribute}/edit', [AttributeController::class, 'editAttribute'])->name('attributes.edit');
             Route::put('attributes/{attribute}', [AttributeController::class, 'updateAttribute'])->name('attributes.update');
             Route::delete('attributes/{attribute}', [AttributeController::class, 'destroyAttribute'])->name('attributes.destroy');
-            
+
         // Settings
             Route::get('settings', [SettingsController::class, 'settings'])->name('settings');
             Route::post('setting/update', [SettingsController::class, 'settingsUpdate'])->name('settings.update');
