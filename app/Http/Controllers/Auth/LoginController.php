@@ -21,12 +21,20 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * Get the post-login redirect path based on user role.
      *
-     * @var string
+     * @return string
      */
-    protected $redirectTo = '/';
+    protected function redirectTo()
+    {
+        $user = \Auth::user();
 
+        if ($user->role === 'admin') {
+            return route('dashboard'); // or just '/dashboard'
+        }
+
+        return '/'; // default redirect path
+    }
     /**
      * Create a new controller instance.
      *

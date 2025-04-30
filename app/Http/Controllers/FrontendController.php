@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AttributeCategory;
+use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -10,10 +11,10 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    public function home() {
-        return;
+    function home() {
+        $banners=Banner::where('status','active')->limit(3)->orderBy('id','DESC')->get();
+        return view('index',compact(['banners']));
     }
-
     public function productList() {
         $products=Product::query();
 

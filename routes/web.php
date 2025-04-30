@@ -16,20 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', function () {
-    $banners=Banner::where('status','active')->limit(3)->orderBy('id','DESC')->get();
-    return view('index',compact(['banners']));
-})->name('home');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-
 Route::middleware('auth')->group(function () {
 
     Route::group(['middleware' => ['role:supper-admin|admin']], function () {
+        Route::get('/admin', function () {
+            return redirect()->route('dashboard');
+        });
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+
         Route::resource('/admin/categories', CategoryController::class);
         Route::resource('/admin/brand', BrandController::class);
         Route::resource('/admin/product', ProductController::class);
@@ -75,6 +71,10 @@ Route::middleware('auth')->group(function () {
         });
     });
 });
+
+
+
+Route::get('/', [FrontendController::class,'home'])->name('home');
 Route::get('products', [FrontendController::class, 'productList'])->name('products');
 Route::get('product-detail/{product}', [FrontendController::class, 'productDetail'])->name('product-detail');
 Route::get('/products/filter', [FrontendController::class, 'filter'])->name('products.filter');
