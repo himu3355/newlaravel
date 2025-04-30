@@ -67,8 +67,8 @@ class FrontendController extends Controller
         return view('frontend.pages.products',compact(['products','categories','recent_products']));
     }
 
-    public function productDetail($slug) {
-        $product_detail= Product::getProductBySlug($slug);
+    public function productDetail($product) {
+        $product_detail= Product::find($product);
         // dd($product_detail);
         return view('frontend.pages.product_detail')->with('product_detail',$product_detail);
     }
