@@ -2371,7 +2371,7 @@ const listThreeProduct = document.querySelectorAll(
 
         if (menuItemActive === "best sellers") {
           products
-            .filter((product) => product.category === "fashion")
+            .filter((product) => product.category === "kids")
             .sort((a, b) => b.sold - a.sold)
             .slice(0, 8)
             .forEach((product) => {
@@ -2390,7 +2390,7 @@ const listThreeProduct = document.querySelectorAll(
 
             if (item.getAttribute("data-item") === "best sellers") {
               products
-                .filter((product) => product.category === "fashion")
+                .filter((product) => product.category === "kids")
                 .sort((a, b) => b.sold - a.sold)
                 .slice(0, 8)
                 .forEach((product) => {
@@ -2401,7 +2401,7 @@ const listThreeProduct = document.querySelectorAll(
             if (item.getAttribute("data-item") === "on sale") {
               products
                 .filter(
-                  (product) => product.sale && product.category === "fashion"
+                  (product) => product.sale && product.category === "kids"
                 )
                 .slice(0, 8)
                 .forEach((product) => {
@@ -2412,7 +2412,7 @@ const listThreeProduct = document.querySelectorAll(
             if (item.getAttribute("data-item") === "new arrivals") {
               products
                 .filter(
-                  (product) => product.new && product.category === "fashion"
+                  (product) => product.new && product.category === "kids"
                 )
                 .slice(0, 8)
                 .forEach((product) => {
