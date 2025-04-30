@@ -20,6 +20,86 @@ class ProductController extends Controller
         return view('backend.product.index', compact('products'));
     }
 
+    public function indexApi()
+    {
+        $products = Product::getAllProduct();
+        $productArray = [];
+        foreach ($products as $product) {
+            $product = [
+                "id" => $product->id,
+                "category" => $product->cat_info->title,
+                "type" => $product->condition,
+                "name" => $product->title,
+                "gender" => "women",
+                "new" => $product->condition == 'new',
+                "sale" => $product->condition == 'sale',
+                "rate" => 4,
+                "price" => $product->price,
+                "originPrice" => 55,
+                "brand" => $product->brand->title,
+                "sold" => 12,
+                "quantity" => $product->stock,
+                "quantityPurchase" => 1,
+                "sizes" => [
+                    // "S",
+                    // "M",
+                    // "L",
+                    // "XL"
+                ],
+                "variation" => [
+                    // [
+                    //     "color" => "red",
+                    //     "colorCode" => "#DB4444",
+                    //     "colorImage" => "./assets/images/product/color/48x48.png",
+                    //     "image" => "./assets/images/product/1000x1000.png"
+                    // ],
+                    // [
+                    //     "color" => "yellow",
+                    //     "colorCode" => "#ECB018",
+                    //     "colorImage" => "./assets/images/product/color/48x48.png",
+                    //     "image" => "./assets/images/product/1000x1000.png"
+                    // ]
+                ],
+                "thumbImage" =>  array_slice(explode(',',$product->photo),0,2),
+                "images" => explode(',',$product->photo),
+                "description" => $product->description,
+                "action" => "quick shop",
+                "slug" => $product->slug
+            ];
+            $productArray[] = $product;
+        }
+        return response()->json(['success' => true, 'data' => $productArray, 'message' => 'Products retrieved successfully']);
+    }
+
+    public function showApi($slug) {
+
+        $product = Product::getProductBySlug($slug);
+        $productData = [
+            "id" => $product->id,
+            "category" => "fashion",
+            "type" => $product->condition,
+            "name" => $product->title,
+            "gender" => "women",
+            "new" => true,
+            "sale" => false,
+            "rate" => 4,
+            "price" => $product->price,
+            "originPrice" => 55,
+            "brand" => $product->brand->title,
+            "sold" => 12,
+            "quantity" => $product->stock,
+            "quantityPurchase" => 1,
+            "sizes" => [],
+            "variation" => [],
+            "thumbImage" => explode(',',$product->photo),
+            "images" => explode(',',$product->photo),
+            "description" => $product->description,
+            "action" => "quick shop",
+            "slug" => $product->slug
+        ];
+        return response()->json(['success' => true, 'data' => $productData, 'message' => 'Products retrieved successfully']);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -48,7 +128,7 @@ class ProductController extends Controller
             'child_cat_id' => 'nullable|exists:categories,id',
             'is_featured' => 'sometimes|in:1',
             'status' => 'required|in:active,inactive',
-            'condition' => 'required|in:default,new,hot',
+            'condition' => 'required|in:default,new,sale',
             'price' => 'required|numeric',
             'discount' => 'nullable|numeric',
             'attributes' => 'nullable|array',
@@ -101,7 +181,7 @@ class ProductController extends Controller
         $items = Product::where('id', $id)->get();
         $attributesByCategory = $this->getAttributesByCategory();
 
-        return view('backend.product.edit', compact('product', 'brands', 'categories', 'items','attributesByCategory'));
+        return view('backend.product.edit', compact('product', 'brands', 'categories', 'items', 'attributesByCategory'));
     }
 
     /**
@@ -123,7 +203,7 @@ class ProductController extends Controller
             'is_featured' => 'sometimes|in:1',
             'brand_id' => 'nullable|exists:brands,id',
             'status' => 'required|in:active,inactive',
-            'condition' => 'required|in:default,new,hot',
+            'condition' => 'required|in:default,new,sale',
             'price' => 'required|numeric',
             'discount' => 'nullable|numeric',
             'attributes' => 'nullable|array',
@@ -175,7 +255,7 @@ class ProductController extends Controller
     {
         $categories = AttributeCategory::where('active', true)
             ->orderBy('sort_order')
-            ->with(['attributes' => function($query) {
+            ->with(['attributes' => function ($query) {
                 $query->where('active', true)->orderBy('sort_order');
             }])
             ->get();

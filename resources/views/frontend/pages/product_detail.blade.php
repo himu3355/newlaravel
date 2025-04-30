@@ -109,7 +109,7 @@
                             <del>${{ number_format($product_detail->price, 2) }}</del>
                         </div>
                         <div class="product-sale caption2 font-semibold bg-green px-3 py-0.5 inline-block rounded-full">
-                            -{{ number_format($product_detail->discount, 0) }}%</div>
+                            -{{ number_format($product_detail->discount, 0) }}%</div><br />
                         <div class="product-description text-secondary mt-3">{!! $product_detail->summary !!}</div>
                     </div>
                     <div class="list-action mt-6">
@@ -330,5 +330,5 @@
 @section('extra-js-before-main')
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/product-detail.js') }}"></script>
+    <!-- <script src="{{ asset('assets/js/product-detail.js') }}"></script> -->
 @endsection

@@ -1,7 +1,6 @@
 @extends('layouts.admin.app')
 
 @section('content')
-
 @if ($errors->any())
 <div class="alert alert-danger">
     <ul>
@@ -119,7 +118,7 @@
                             <option value="">--Select Condition--</option>
                             <option value="default">Default</option>
                             <option value="new">New</option>
-                            <option value="hot">Hot</option>
+                            <option value="sale">Sale</option>
                         </select>
                     </div>
 

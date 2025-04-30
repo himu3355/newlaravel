@@ -1,7 +1,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RK University | Box Cricket</title>
+    <title>Bunnys Bags</title>
 		<link rel="icon" href="{{ asset('admin/images/favicon.png') }}" type="image/gif" sizes="16x16">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

@@ -213,7 +213,7 @@
                             <div class="brand-item flex items-center justify-between" data-item="{{ $attribute->name }}">
                                 <div class="left flex items-center cursor-pointer">
                                     <div class="block-input">
-                                        <input type="checkbox" name="attributes[]" id="{{ $attribute->name }}"  value="{{ $attribute->id }}" {{ isset($filter_atribs) ? (is_array($filter_atribs) ? (in_array($attribute->id,$filter_atribs) ? 'checked' :'') :'') : '' }} />
+                                        <input type="checkbox" name="attributes[]" id="{{ $attribute->name }}" value="{{ $attribute->id }}" {{ isset($filter_atribs) ? (is_array($filter_atribs) ? (in_array($attribute->id,$filter_atribs) ? 'checked' :'') :'') : '' }} />
                                         <i class="ph-fill ph-check-square icon-checkbox text-2xl"></i>
                                     </div>
                                     <label for="{{ $attribute->name }}" class="brand-name capitalize pl-2 cursor-pointer">{{ $attribute->name }}</label>
@@ -267,12 +267,12 @@
                 </div>
                 <div class="list-filtered flex items-center gap-3 flex-wrap"></div>
                 @if (count($products)>0)
-                    
+
                 <div class="list-product hide-product-sold grid lg:grid-cols-3 grid-cols-2 sm:gap-[30px] gap-[20px] mt-7" data-item="9">
                     @foreach ($products as $product)
                     @php
-                        $photo = explode(',', $product->photo);
-                        // dd($photo[0]);
+                    $photo = explode(',', $product->photo);
+                    // dd($photo[0]);
                     @endphp
                     <div data-item="{{ $product->slug }}" class="product-item grid-type">
                         <div class="product-main cursor-pointer block" data-item="22">
@@ -286,7 +286,11 @@
                                     </div>
                                 </div>
                                 <div class="product-img w-full h-full aspect-[3/4]">
-                                    <img key="0" class="w-full h-full object-cover duration-700" src="{{ $photo[1] }}" alt="img"><img key="1" class="w-full h-full object-cover duration-700" src="{{ $photo[0] }}" alt="img">
+                                    <img key="0" class="w-full h-full object-cover duration-700" src="{{ isset($photo[0]) ? $photo[0] : ''  }}" alt="img">
+                                    @if (isset($photo[1]))
+
+                                    <img key="1" class="w-full h-full object-cover duration-700" src="{{ $photo[1] }}" alt="img">
+                                    @endif
                                 </div>
                                 <div class="list-action grid grid-cols-2 gap-3 px-5 absolute w-full bottom-5 max-lg:hidden">
                                     <div class="quick-view-btn w-full text-button-uppercase py-2 text-center rounded-full duration-300 bg-white hover:bg-black hover:text-white">
@@ -322,7 +326,7 @@
                     @endforeach
                 </div>
                 @else
-                No Products 
+                No Products
                 @endif
 
                 <div class="list-pagination w-full flex items-center gap-4 mt-10"></div>
@@ -331,4 +335,32 @@
     </div>
 </div>
 
+@endsection
+
+@section('extra-js-before-main')
+<script>
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     // Initial load
+    //     var productjson = loadProducts();
+    // });
+
+    // function loadProducts(params = {}) {
+
+    //     fetch('/api/v1/products')
+    //         .then(responce => {
+    //             if (!responce.ok) {
+    //                 throw new Error('Network response was not ok');
+    //             }
+
+    //             return responce.json();
+    //         }).then(data => {
+    //             if (data.success) {
+    //                 return data.data;
+    //             }
+    //         }).catch(error => {
+    //             console.log(error);
+    //         });
+
+    // }
+</script>
 @endsection

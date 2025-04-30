@@ -9,7 +9,7 @@
                 <div class="container h-full">
                     <div class="slider-main h-full w-full">
                         <div class="slider-toys-kid h-full">
-                            
+
 
                             @foreach($banners as $key=>$banner)
                             <div class="slider-item">

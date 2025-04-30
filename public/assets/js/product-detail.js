@@ -43,6 +43,8 @@ if (document.querySelector('.swiper-product-scroll')) {
 
 // detail infor by fetch data
 const pathname = new URL(window.location.href)
+const slug = pathname.pathname.split("/product-detail/")[1];
+
 const productId = pathname.searchParams.get('id') === null ? '1' : pathname.searchParams.get('id')
 const productDetail = document.querySelector('.product-detail')
 let currentIndex;
@@ -53,13 +55,15 @@ let typePage = classes[1];
 
 
 if (productDetail) {
-    fetch(window.APP_URL+"assets/data/Product.json")
+    fetch(window.APP_URL+"api/v1/products/"+slug)
         .then(response => response.json())
         .then(data => {
-            let productMain = data.find(product => product.id === productId);
+
+            // let productMain = data.find(product => product.id === productId);
+            let productMain = data.data;
 
             // find location of current product in array
-            currentIndex = data.findIndex(product => product.id === productId);
+            // currentIndex = data.findIndex(product => product.id === productId);
 
             // Next, Prev products when click button
             const prevBtn = document.querySelector('.breadcrumb-product .prev-btn')
@@ -87,33 +91,33 @@ if (productDetail) {
             const listImgMain = productDetail.querySelector('.featured-product .list-img .popup-img .swiper-wrapper')
             const popupImg = productDetail.querySelector('.featured-product .list-img .popup-img')
 
-            // if (listImg2 && listImg) {
-            //     productMain.images.map(item => {
-            //         const imgItem = document.createElement('div')
-            //         imgItem.classList.add('swiper-slide', 'popup-link')
-            //         imgItem.innerHTML = `
-            //             <img src=${item} alt='img' class='w-full aspect-[3/4] object-cover' />
+            if (listImg2 && listImg) {
+                productMain.images.map(item => {
+                    const imgItem = document.createElement('div')
+                    imgItem.classList.add('swiper-slide', 'popup-link')
+                    imgItem.innerHTML = `
+                        <img src=${item} alt='img' class='w-full aspect-[3/4] object-cover' />
 
-            //         `
-            //         const imgItemClone = imgItem.cloneNode(true) // Copy imgItem
-            //         const imgItemClone2 = imgItem.cloneNode(true) // Copy imgItem
-            //         imgItemClone.classList.remove('popup-link')
+                    `
+                    const imgItemClone = imgItem.cloneNode(true) // Copy imgItem
+                    const imgItemClone2 = imgItem.cloneNode(true) // Copy imgItem
+                    imgItemClone.classList.remove('popup-link')
 
-            //         listImg2.appendChild(imgItem)
-            //         listImg.appendChild(imgItemClone)
-            //         listImgMain.appendChild(imgItemClone2)
+                    listImg2.appendChild(imgItem)
+                    listImg.appendChild(imgItemClone)
+                    listImgMain.appendChild(imgItemClone2)
 
-            //         const slides = document.querySelectorAll('.mySwiper .swiper-slide')
-            //         slides[0].classList.add('swiper-slide-thumb-active')
+                    const slides = document.querySelectorAll('.mySwiper .swiper-slide')
+                    slides[0].classList.add('swiper-slide-thumb-active')
 
-            //         slides.forEach((img, index) => {
-            //             img.addEventListener('click', () => {
-            //                 // Chuyển swiper 2 đến vị trí tương ứng với ảnh được click trong swiper 1
-            //                 swiper2.slideTo(index);
-            //             });
-            //         });
-            //     })
-            // }
+                    slides.forEach((img, index) => {
+                        img.addEventListener('click', () => {
+                            // Chuyển swiper 2 đến vị trí tương ứng với ảnh được click trong swiper 1
+                            swiper2.slideTo(index);
+                        });
+                    });
+                })
+            }
 
             // list-img countdown timer
             const listImg3 = productDetail.querySelector('.featured-product.countdown-timer .list-img .list')

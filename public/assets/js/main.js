@@ -422,7 +422,7 @@ const handleItemModalWishlist = () => {
       const prdId = removeWishlistBtn
         .closest(".item")
         .getAttribute("data-item");
-      // JSON.parse(wishlistStore)
+    //   JSON.parse(wishlistStore)
       const newArray = JSON.parse(wishlistStore).filter(
         (item) => item.id !== prdId
       );
@@ -548,7 +548,6 @@ const handleItemModalCart = () => {
                         </div>
                         <div class="flex items-center justify-between gap-2 mt-3 w-full">
                             <div class="flex items-center text-secondary2 capitalize">
-                                ${item.sizes[0]}/${item.variation[0].color}
                             </div>
                             <div class="product-price text-title">$${item.price}.00</div>
                         </div>
@@ -575,7 +574,7 @@ const handleItemModalCart = () => {
     removeCartBtn.addEventListener("click", () => {
       const prdId = removeCartBtn.closest(".item").getAttribute("data-item");
       // cartStore
-      const newArray = cartStore.filter((item) => item.id !== prdId);
+      const newArray = cartStore.filter((item) => item.id !== prdId*1);
       localStorage.setItem("cartStore", JSON.stringify(newArray));
       handleItemModalCart();
 
@@ -1335,7 +1334,13 @@ const handleItemModalQuickview = () => {
     const addWishlistIcon = modalQuickviewMain.querySelector('.add-wishlist-btn')
 
     const existingIndex = wishlistStore.findIndex(
-      (prd) => prd.id === item.id
+      (prd) => {
+        console.log(prd.id,item.id);
+
+        if (prd.id === item.id) {
+            return prd;
+        }
+      }
     );
 
     if (existingIndex > -1) {
@@ -1859,17 +1864,21 @@ function addEventToProductItem(products) {
           cartStore = cartStore ? JSON.parse(cartStore) : [];
 
           const existingIndex = cartStore.findIndex(
-            (item) => item.id === productId
+            (item) => item.id === productId*1
           );
 
           if (existingIndex > -1) {
             // If prd existed in cart
             openModalCart();
           } else {
-            console.log(products);
+            // console.log(products);
+            // console.log(productId);
+
 
             // If prd not exist in cart, add it to cart
-            const productToAdd = products?.find((item) => item.id === productId);
+            const productToAdd = products?.find((item) => item.id === productId*1);
+            console.log(productToAdd);
+
             if (productToAdd) {
               cartStore.push(productToAdd);
               openModalCart();
@@ -2062,9 +2071,17 @@ const listThreeProduct = document.querySelectorAll(
 );
 
 // Fetch products from JSON file (assuming products.json)
-  fetch(window.APP_URL+"assets/data/Product.json")
+  fetch(window.APP_URL+'api/v1/products')
   .then((response) => response.json())
-  .then((products) => {
+  .then((data) => {
+    products = data.data.map(product => ({
+        ...product,
+
+  id: parseInt(product.id, 10),
+    }));
+    console.log(products);
+
+
     // Display the first 4 products
     if (listFourProduct) {
       listFourProduct.forEach((list) => {
@@ -2140,12 +2157,6 @@ const listThreeProduct = document.querySelectorAll(
 
                 if (item.getAttribute("data-item") === "new arrivals") {
                   products
-                    .filter(
-                      (product) =>
-                        product.new &&
-                        (product.type === "underwear" ||
-                          product.type === "swimwear")
-                    )
                     .slice(0, 4)
                     .forEach((product) => {
                       const productElement = createProductItem(product);
@@ -2218,6 +2229,8 @@ const listThreeProduct = document.querySelectorAll(
 
         menuItems.forEach((item) => {
           item.addEventListener("click", () => {
+            console.log(item.getAttribute("data-item"));
+
             const productItems =
               listSixProduct.querySelectorAll(".swiper-slide");
 
@@ -2273,7 +2286,7 @@ const listThreeProduct = document.querySelectorAll(
             } else {
               if (item.getAttribute("data-item") === "best sellers") {
                 products
-                  .filter((product) => product.category === "fashion")
+                  .filter((product) => product.category === "test")
                   .sort((a, b) => b.sold - a.sold)
                   .slice(0, 6)
                   .forEach((product) => {
@@ -2284,9 +2297,11 @@ const listThreeProduct = document.querySelectorAll(
                   });
               }
               if (item.getAttribute("data-item") === "on sale") {
+                console.log(products);
+
                 products
                   .filter(
-                    (product) => product.sale && product.category === "fashion"
+                    (product) => product.sale && product.category === "test"
                   )
                   .slice(0, 6)
                   .forEach((product) => {
@@ -3298,7 +3313,7 @@ const handleInforCart = () => {
       };
 
       const productElement = document.createElement("div");
-      productElement.setAttribute("data-item", product.id);
+      productElement.setAttribute("data-item", product.id*1);
       productElement.classList.add(
         "item",
         "flex",
@@ -3409,7 +3424,7 @@ const handleInforCart = () => {
       removeCartBtn.addEventListener("click", () => {
         const prdId = removeCartBtn.closest(".item").getAttribute("data-item");
         // cartStore
-        const newArray = cartStore.filter((item) => item.id !== prdId);
+        const newArray = cartStore.filter((item) => item.id !== prdId*1);
         localStorage.setItem("cartStore", JSON.stringify(newArray));
         handleInforCart();
       });
