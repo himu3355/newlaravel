@@ -98,7 +98,7 @@ class FrontendController extends Controller
         if ($request->has('attributes') && is_array($request['attributes'])) {
             foreach ($request['attributes'] as $attributeId) {
                 $query->whereHas('attributes', function ($q) use ($attributeId) {
-                    $q->where('attributes.id', $attributeId);
+                    $q->orwhere('attributes.id', $attributeId);
                 });
             }
         }
@@ -112,5 +112,9 @@ class FrontendController extends Controller
             ->get();
         $filter_atribs = $request['attributes'];
         return view('frontend.pages.products',compact(['products','categories','filter_atribs']));
+    }
+
+    public function cart() {
+        return view('frontend.pages.cart');
     }
 }
