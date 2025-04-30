@@ -2215,7 +2215,7 @@ const listThreeProduct = document.querySelectorAll(
               });
           } else {
             products
-              .filter((product) => product.category === "fashion")
+              .filter((product) => product.category === "kids")
               .sort((a, b) => b.sold - a.sold)
               .slice(0, 6)
               .forEach((product) => {
@@ -2286,7 +2286,7 @@ const listThreeProduct = document.querySelectorAll(
             } else {
               if (item.getAttribute("data-item") === "best sellers") {
                 products
-                  .filter((product) => product.category === "test")
+                  .filter((product) => product.category === "kids")
                   .sort((a, b) => b.sold - a.sold)
                   .slice(0, 6)
                   .forEach((product) => {
@@ -2301,7 +2301,7 @@ const listThreeProduct = document.querySelectorAll(
 
                 products
                   .filter(
-                    (product) => product.sale && product.category === "test"
+                    (product) => product.sale && product.category === "kids"
                   )
                   .slice(0, 6)
                   .forEach((product) => {
@@ -2314,7 +2314,7 @@ const listThreeProduct = document.querySelectorAll(
               if (item.getAttribute("data-item") === "new arrivals") {
                 products
                   .filter(
-                    (product) => product.new && product.category === "fashion"
+                    (product) => product.new && product.category === "kids"
                   )
                   .slice(0, 6)
                   .forEach((product) => {
