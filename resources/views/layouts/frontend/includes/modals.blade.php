@@ -295,7 +295,7 @@
 
 <div class="modal-cart-block">
     <div class="modal-cart-main flex">
-        <div class="left w-1/2 border-r border-line py-6 max-md:hidden">
+        <div class="left w-1/2 border-r border-line py-6 max-md:hidden" style="display: none;">
             <div class="heading5 px-6 pb-3">You May Also Like</div>
             <div class="list px-6">
                 <div class="product-item item py-5 flex items-center justify-between gap-3 border-b border-line" data-item="1">
@@ -368,14 +368,14 @@
                 </div>
             </div>
         </div>
-        <div class="right cart-block md:w-1/2 w-full py-6 relative overflow-hidden">
+        <div class="right cart-block w-full py-6 relative overflow-hidden">
             <div class="heading px-6 pb-3 flex items-center justify-between relative">
                 <div class="heading5">Shopping Cart</div>
                 <div class="close-btn absolute right-6 top-0 w-6 h-6 rounded-full bg-surface flex items-center justify-center duration-300 cursor-pointer hover:bg-black hover:text-white">
                     <i class="ph ph-x text-sm"></i>
                 </div>
             </div>
-            <div class="time countdown-cart px-6">
+            <div class="time countdown-cart px-6"style="display: none;">
                 <div class="flex items-center gap-3 px-5 py-3 bg-green rounded-lg">
                     <p class="text-3xl">🔥</p>
                     <div class="caption1">
@@ -384,7 +384,7 @@
                     </div>
                 </div>
             </div>
-            <div class="heading banner mt-3 px-6">
+            <div class="heading banner mt-3 px-6" style="display: none;">
                 <div class="text">
                     Buy <span class="text-button"> $<span class="more-price">150</span>.00 </span>
                     <span>more to get </span>
@@ -394,7 +394,7 @@
                     <div class="progress-line"></div>
                 </div>
             </div>
-            <div class="list-product px-6"></div>
+            <div class="list-product px-6" style="max-height: calc(100%);"></div>
             <div class="footer-modal bg-white absolute bottom-0 left-0 w-full">
                 <div class="flex items-center justify-center lg:gap-14 gap-8 px-6 py-4 border-b border-line">
                     <div class="note-btn item flex items-center gap-3 cursor-pointer">
