@@ -189,7 +189,7 @@
     <!-- Menu bar -->
     <div class="menu_bar fixed bg-white bottom-0 left-0 w-full h-[70px] sm:hidden z-[101]">
         <div class="menu_bar-inner grid grid-cols-4 items-center h-full">
-            <a href="index.html" class="menu_bar-link flex flex-col items-center gap-1">
+            <a href="{{ route('home') }}" class="menu_bar-link flex flex-col items-center gap-1">
                 <span class="ph-bold ph-house text-2xl block"></span>
                 <span class="menu_bar-title caption2 font-semibold">Home</span>
             </a>

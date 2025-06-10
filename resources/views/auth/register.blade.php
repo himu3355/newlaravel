@@ -8,7 +8,7 @@
                     <div class="text-content">
                         <div class="heading2 text-center">Register</div>
                         <div class="link flex items-center justify-center gap-1 caption1 mt-3">
-                            <a href="index.html">Homepage</a>
+                            <a href="{{ route('home') }}">Homepage</a>
                             <i class="ph ph-caret-right text-sm text-secondary2"></i>
                             <div class="text-secondary2 capitalize">Register</div>
                         </div>
