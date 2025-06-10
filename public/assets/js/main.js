@@ -1581,13 +1581,13 @@ const createProductItem = (product) => {
             <div class="product-thumb bg-white relative overflow-hidden rounded-2xl">
                 ${productTags}
                 <div class="list-action-right absolute top-3 right-3 max-lg:hidden">
-                    <div
+                    <div style="display: none"
                         class="add-wishlist-btn w-[32px] h-[32px] flex items-center justify-center rounded-full bg-white duration-300 relative">
                         <div class="tag-action bg-black text-white caption2 px-1.5 py-0.5 rounded-sm">
                             Add To Wishlist</div>
                         <i class="ph ph-heart text-lg"></i>
                     </div>
-                    <div
+                    <div style="display: none"
                         class="compare-btn w-[32px] h-[32px] flex items-center justify-center rounded-full bg-white duration-300 relative mt-2">
                         <div class="tag-action bg-black text-white caption2 px-1.5 py-0.5 rounded-sm">
                             Compare Product</div>
@@ -2592,7 +2592,7 @@ const createProductItemMarketplace = (product) => {
                                 class="add-wishlist-btn w-8 h-8 bg-white flex items-center justify-center rounded-full box-shadow-small duration-300">
                                 <i class="ph ph-heart"></i>
                             </span>
-                            <span
+                            <span style="display: none"
                                 class="compare-btn w-8 h-8 bg-white flex items-center justify-center rounded-full box-shadow-small duration-300">
                                 <i class="ph ph-repeat"></i>
                             </span>
