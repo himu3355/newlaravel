@@ -163,7 +163,7 @@
                                 <div class=""><span class="heading5">$</span><span class="total-cart heading5">116</span><span class="heading5">.00</span></div>
                             </div>
                             <div class="block-button flex flex-col items-center gap-y-4 mt-5">
-                                <a href="checkout.html" class="checkout-btn button-main text-center w-full"> Process To Checkout</a>
+                                <a href="{{route('checkout')}}" class="checkout-btn button-main text-center w-full"> Process To Checkout</a>
                                 <a class="text-button hover-underline" href="/shop-breadcrumb1.html">Continue shopping </a>
                             </div>
                         </div>

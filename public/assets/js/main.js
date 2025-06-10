@@ -3547,11 +3547,6 @@ if (listProductCheckout) {
             <div class="flex items-center justify-between w-full">
                 <div>
                     <div class="name text-title">${product.name}</div>
-                    <div class="caption1 text-secondary mt-2">
-                        <span class='size capitalize'>${product.sizes[0]}</span>
-                        <span>/</span>
-                        <span class='color capitalize'>${product.variation[0].color}</span>
-                    </div>
                 </div>
                 <div class="text-title">
                     <span class='quantity'>${product.quantityPurchase}</span>

@@ -18,7 +18,7 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
-
+    Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
 
     Route::group(['middleware' => ['role:supper-admin|admin']], function () {
         Route::get('/admin', function () {
