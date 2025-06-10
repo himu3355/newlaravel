@@ -416,7 +416,7 @@
                 </div>
                 <div class="block-button text-center p-6">
                     <div class="flex items-center gap-4">
-                        <a href="cart.html" class="button-main basis-1/2 bg-white border border-black text-black text-center uppercase"> View cart </a>
+                        <a href="{{ route('cart') }}" class="button-main basis-1/2 bg-white border border-black text-black text-center uppercase"> View cart </a>
                         <a href="checkout.html" class="button-main basis-1/2 text-center uppercase"> Check Out </a>
                     </div>
                     <div class="text-button-uppercase continue mt-4 text-center has-line-before cursor-pointer inline-block">Or continue shopping</div>

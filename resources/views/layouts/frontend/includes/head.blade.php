@@ -11,4 +11,9 @@
     let appUrl = "{{ rtrim(config('app.url'),'/') }}/";
     window.APP_URL = appUrl;
 </script>
+@if(Auth::check())
+<script>
+    window.LOGGED_IN_USER_ID = {{ Auth::id() }};
+</script>
+@endif
 @yield('extra-css')

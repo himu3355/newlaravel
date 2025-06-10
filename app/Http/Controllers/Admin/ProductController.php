@@ -64,7 +64,10 @@ class ProductController extends Controller
                 "images" => explode(',',$product->photo),
                 "description" => $product->description,
                 "action" => "quick shop",
-                "slug" => $product->slug
+                "slug" => $product->slug,
+                'attributes' => $product->attributes->map(function ($attribute) {
+                    return  $attribute->name;
+                })->toArray(),
             ];
             $productArray[] = $product;
         }

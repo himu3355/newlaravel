@@ -101,17 +101,17 @@
                             <div class="progress"></div>
                         </div>
                         <div class="range-input">
-                            <input class="range-min" type="range" min="0" max="300" value="0" />
-                            <input class="range-max" type="range" min="0" max="300" value="300" />
+                            <input class="range-min" type="range" min="{{ $min_price }}" max="{{ $max_price }}" value="{{ $min_price }}" />
+                            <input class="range-max" type="range" min="{{ $min_price }}" max="{{ $max_price }}" value="{{ $max_price }}" />
                         </div>
                         <div class="price-block flex items-center justify-between flex-wrap mt-4">
                             <div class="min flex items-center gap-1">
                                 <div>Min price:</div>
-                                <div class="min-price">$0</div>
+                                <div class="min-price">${{ $min_price }}</div>
                             </div>
                             <div class="min flex items-center gap-1">
                                 <div>Max price:</div>
-                                <div class="max-price">$300</div>
+                                <div class="max-price">${{ $max_price }}</div>
                             </div>
                         </div>
                     </div>
@@ -205,18 +205,18 @@
                     </div> -->
                     @foreach ($categories as $category)
 
-                    <div class="filter-brand pb-8 mt-8">
+                    <div class="filter-attributes pb-8 mt-8">
                         <div class="heading6">{{$category->name}}</div>
-                        <div class="list-brand mt-4">
+                        <div class="list-attributes mt-4">
                             @foreach($category->attributes as $attribute)
 
-                            <div class="brand-item flex items-center justify-between" data-item="{{ $attribute->name }}">
+                            <div class="attributes-item flex items-center justify-between" data-item="{{ $attribute->name }}">
                                 <div class="left flex items-center cursor-pointer">
                                     <div class="block-input">
-                                        <input type="checkbox" name="attributes[]" id="{{ $attribute->name }}" value="{{ $attribute->id }}" {{ isset($filter_atribs) ? (is_array($filter_atribs) ? (in_array($attribute->id,$filter_atribs) ? 'checked' :'') :'') : '' }} />
+                                        <input type="checkbox" name="{{ $attribute->name }}" id="{{ $attribute->name }}" value="{{ $attribute->id }}" {{ isset($filter_atribs) ? (is_array($filter_atribs) ? (in_array($attribute->id,$filter_atribs) ? 'checked' :'') :'') : '' }} />
                                         <i class="ph-fill ph-check-square icon-checkbox text-2xl"></i>
                                     </div>
-                                    <label for="{{ $attribute->name }}" class="brand-name capitalize pl-2 cursor-pointer">{{ $attribute->name }}</label>
+                                    <label for="{{ $attribute->name }}" class="attributes-name capitalize pl-2 cursor-pointer">{{ $attribute->name }}</label>
                                 </div>
                             </div>
                             @endforeach
@@ -274,7 +274,7 @@
                     $photo = explode(',', $product->photo);
                     // dd($photo[0]);
                     @endphp
-                    <div data-item="{{ $product->slug }}" class="product-item grid-type">
+                    <div data-item="{{ $product->id }}" class="product-item grid-type">
                         <div class="product-main cursor-pointer block" data-item="22">
                             <div class="product-thumb bg-white relative overflow-hidden rounded-2xl">
                                 <div class="product-tag text-button-uppercase text-white bg-red px-3 py-0.5 inline-block rounded-full absolute top-3 left-3 z-[1]">Sale</div>
@@ -363,4 +363,10 @@
 
     // }
 </script>
+@endsection
+
+@section('extra-js')
+
+<script src="{{ asset('assets/js/shop.js') }}"></script>
+
 @endsection

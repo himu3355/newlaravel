@@ -78,7 +78,7 @@
                         <div class="line absolute bg-line w-px h-6 -right-6"></div>
                     </div> --}}
                     <div class="list-action flex items-center gap-4">
-                    @if (Auth::guest())
+                        @if (Auth::guest())
                         <div class="user-icon flex items-center justify-center cursor-pointer">
                             <i class="ph-bold ph-user text-2xl"></i>
                             <div class="login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-small">
@@ -92,20 +92,23 @@
                             </div>
                         </div>
                         @else
-                        <div class="user-icon flex items-center justify-center cursor-pointer">
-                            <i class="ph-bold ph-user text-2xl"></i>
-        <form action="{{ route('logout') }}" method="post">
-          @csrf
-          <button type="submit" class="login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-small" style="
-    border: none;
-    background-color: transparent;">
-            Logout
-          </button>
-        </form>
-                            <div class="login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-small">
-                                <a href="{{ route('login') }}" class="button-main w-full text-center">Logout</a>
+                        <style>
+                            .button-main:hover {
+                                background-color: var(--green) !important;
+                            }
+                        </style>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <div class="user-icon flex items-center justify-center cursor-pointer">
+                                <i class="ph-bold ph-user text-2xl"></i>
+                                <div class="login-popup absolute top-[74px] w-[320px] p-7 rounded-xl bg-white box-shadow-small">
+
+                                    <button type="submit" class="button-main w-full text-center " style="background-color: var(--black);">
+                                        Logout
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                         @endif
                         <div class="max-md:hidden wishlist-icon flex items-center relative cursor-pointer">
                             <i class="ph-bold ph-heart text-2xl"></i>

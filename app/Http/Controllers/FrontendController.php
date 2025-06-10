@@ -82,8 +82,14 @@ class FrontendController extends Controller
             ->orderBy('sort_order')
             ->with('attributes')
             ->get();
+        
+        // Get min and max price from filtered products (before pagination)
+        $min_price = (clone $products)->min('price');
+        $max_price = (clone $products)->max('price');
+        
+
         // Sort by name , price, category
-        return view('frontend.pages.products',compact(['products','categories','recent_products']));
+        return view('frontend.pages.products',compact(['products','categories','recent_products','min_price','max_price']));
     }
 
     public function productDetail($product) {
@@ -111,7 +117,11 @@ class FrontendController extends Controller
             ->with('attributes')
             ->get();
         $filter_atribs = $request['attributes'];
-        return view('frontend.pages.products',compact(['products','categories','filter_atribs']));
+        
+        // Get min and max price from filtered products (before pagination)
+        $min_price = (clone $products)->min('price');
+        $max_price = (clone $products)->max('price');
+        return view('frontend.pages.products',compact(['products','categories','filter_atribs','min_price','max_price']));
     }
 
     public function cart() {

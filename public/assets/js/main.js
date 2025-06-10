@@ -578,6 +578,21 @@ const handleItemModalCart = () => {
       localStorage.setItem("cartStore", JSON.stringify(newArray));
       handleItemModalCart();
 
+    // Remove from database if logged in
+    if (window.LOGGED_IN_USER_ID) {
+      fetch(
+        window.APP_URL + `api/cart/user/${window.LOGGED_IN_USER_ID}/product/${prdId}`,
+        { method: 'DELETE' }
+      )
+      .then(response => response.json())
+      .then(data => {
+        console.log('Removed from DB:', data);
+      })
+      .catch(error => {
+        console.error('Error removing from DB:', error);
+      });
+    }
+
       if (cartStore.length === 0) {
         modalCart.querySelector('.more-price').innerHTML = 0
         modalCart.querySelector('.tow-bar-block .progress-line').style.width = '0'
@@ -1399,6 +1414,28 @@ const handleItemModalQuickview = () => {
         // If prd not exist in cart, add it to cart
         cartStore.push(item);
         openModalCart();
+
+
+        // Add to database if logged in
+        if (window.LOGGED_IN_USER_ID) {
+            fetch(window.APP_URL + 'api/cart/sync', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                user_id: window.LOGGED_IN_USER_ID,
+                cart: cartStore
+            })
+            })
+            .then(response => response.json())
+            .then(data => {
+            console.log('Cart synced to DB:', data);
+            })
+            .catch(error => {
+            console.error('Error syncing cart:', error);
+            });
+        }
       }
 
       // Save cart to localStorage
@@ -1877,11 +1914,33 @@ function addEventToProductItem(products) {
 
             // If prd not exist in cart, add it to cart
             const productToAdd = products?.find((item) => item.id === productId*1);
-            console.log(productToAdd);
+            console.log(productId*1);
 
             if (productToAdd) {
               cartStore.push(productToAdd);
               openModalCart();
+
+
+                // Add to database if logged in
+                if (window.LOGGED_IN_USER_ID) {
+                    fetch(window.APP_URL + 'api/cart/sync', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: window.LOGGED_IN_USER_ID,
+                        cart: cartStore
+                    })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                    console.log('Cart synced to DB:', data);
+                    })
+                    .catch(error => {
+                    console.error('Error syncing cart:', error);
+                    });
+                }
             }
           }
 
@@ -2076,8 +2135,7 @@ const listThreeProduct = document.querySelectorAll(
   .then((data) => {
     products = data.data.map(product => ({
         ...product,
-
-  id: parseInt(product.id, 10),
+        id: parseInt(product.id, 10),
     }));
     console.log(products);
 
@@ -3350,7 +3408,7 @@ const handleInforCart = () => {
                     </div>
                 </div>
                 <div class="w-1/6 flex total-price items-center justify-center">
-                    <div class="text-title text-center">$${product.price}.00
+                    <div class="text-title text-center">$${product.price*product.quantityPurchase}.00
                     </div>
                 </div>
                 <div class="w-1/12 flex items-center justify-center">
@@ -3374,6 +3432,11 @@ const handleInforCart = () => {
 
         // Update quantity localStorage
         localStorage.setItem("cartStore", JSON.stringify(cartStore));
+        
+        // Sync cart to database if logged in
+        if (window.LOGGED_IN_USER_ID) {
+            syncCartToDatabase(window.LOGGED_IN_USER_ID);
+        }
       });
 
       quantityBlock.querySelector(".ph-minus").addEventListener("click", () => {
@@ -3386,6 +3449,12 @@ const handleInforCart = () => {
 
           // Update quantity localStorage
           localStorage.setItem("cartStore", JSON.stringify(cartStore));
+
+            
+            // Sync cart to database if logged in
+            if (window.LOGGED_IN_USER_ID) {
+                syncCartToDatabase(window.LOGGED_IN_USER_ID);
+            }
         }
       });
 
@@ -3427,6 +3496,21 @@ const handleInforCart = () => {
         const newArray = cartStore.filter((item) => item.id !== prdId*1);
         localStorage.setItem("cartStore", JSON.stringify(newArray));
         handleInforCart();
+        window.location.reload();
+        // Remove from database if logged in
+        if (window.LOGGED_IN_USER_ID) {
+            fetch(
+                window.APP_URL + `api/cart/user/${window.LOGGED_IN_USER_ID}/product/${prdId}`,
+                { method: 'DELETE' }
+            )
+            .then(response => response.json())
+            .then(data => {
+                console.log('Removed from DB:', data);
+            })
+            .catch(error => {
+                console.error('Error removing from DB:', error);
+            });
+        }
       });
     });
   }
@@ -3577,4 +3661,44 @@ function removeOpen(index1) {
       item2.classList.remove("open");
     }
   });
+}
+
+function syncCartToDatabase(userId) {
+  let cartStore = localStorage.getItem("cartStore");
+  cartStore = cartStore ? JSON.parse(cartStore) : [];
+
+  fetch(window.APP_URL + 'api/cart/sync', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      // Add your auth token if needed
+      // 'Authorization': 'Bearer ' + userToken
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      cart: cartStore
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Optionally update localStorage or UI based on response
+    console.log('Cart synced:', data);
+  })
+  .catch(error => {
+    console.error('Error syncing cart:', error);
+  });
+}
+
+if (window.LOGGED_IN_USER_ID) {
+  fetch(window.APP_URL + 'api/cart/user/' + window.LOGGED_IN_USER_ID)
+    .then(response => response.json())
+    .then(data => {
+      // Replace localStorage cart with server cart
+      localStorage.setItem("cartStore", JSON.stringify(data.cart));
+      handleItemModalCart(); // Update cart modal
+      handleInforCart();     // Update cart page if needed
+    })
+    .catch(error => {
+      console.error('Error fetching user cart:', error);
+    });
 }

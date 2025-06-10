@@ -18,6 +18,8 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
+
+
     Route::group(['middleware' => ['role:supper-admin|admin']], function () {
         Route::get('/admin', function () {
             return redirect()->route('dashboard');
@@ -81,4 +83,4 @@ Route::get('/products/filter', [FrontendController::class, 'filter'])->name('pro
 Route::get('/aboutus', [FrontendController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactus', [FrontendController::class, 'contactus'])->name('contactus');
 Route::post('/contactus', [FrontendController::class, 'contactusstore'])->name('contactus.store');
-Route::post('/cart', [FrontendController::class, 'cart'])->name('cart');
+Route::get('/cart', [FrontendController::class, 'cart'])->name('cart');

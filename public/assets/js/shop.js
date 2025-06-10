@@ -101,10 +101,12 @@ rangeInput.forEach(input => {
 
 // Function to fetch products from JSON file
 function fetchProducts() {
-    fetch(window.APP_URL+'/assets/data/Product.json')
+    // fetch(window.APP_URL+'/assets/data/Product.json')
+  fetch(window.APP_URL+'api/v1/products')
         .then(response => response.json())
         .then(data => {
-            productsData = data;
+            productsData = data.data;
+            // console.log(productsData);
             renderProducts(currentPage, productsData);
             renderPagination(productsData);
 
@@ -146,6 +148,7 @@ function fetchProducts() {
                     size: Array.from(document.querySelectorAll('.filter-size .size-item.active')).map(item => item.getAttribute('data-item')),
                     color: Array.from(document.querySelectorAll('.filter-color .color-item.active')).map(item => item.getAttribute('data-item')),
                     brand: Array.from(document.querySelectorAll('.filter-brand .brand-item input[type="checkbox"]:checked')).map(item => item.getAttribute('name')),
+                    attributes: Array.from(document.querySelectorAll('.filter-attributes .list-attributes input[type="checkbox"]:checked')).map(item => item.getAttribute('name')),
                     minPrice: 0, //default
                     maxPrice: 300, //default
                     sale: document.querySelector('.check-sale input[type="checkbox"]:checked')
@@ -171,6 +174,11 @@ function fetchProducts() {
                     const brandValue = document.querySelector('.filter-brand select').value;
                     selectedFilters.brand = brandValue !== "null" ? brandValue : [];
                 }
+                
+                if (document.querySelector('.filter-attributes select')) {
+                    const attributesValue = document.querySelector('.filter-attributes select').value;
+                    selectedFilters.attributes = attributesValue !== "null" ? attributesValue : [];
+                }
 
                 if (rangeInput && rangeInput.length > 1) {
                     selectedFilters.minPrice = parseInt(rangeInput[0].value);
@@ -191,10 +199,17 @@ function fetchProducts() {
 
                 // filter product base on items filtered
                 let filteredProducts = productsData.filter(product => {
+                    // console.log(product.attributes);
+                    // console.log(selectedFilters);
                     if (selectedFilters.type && selectedFilters.type?.length > 0 && product.type !== selectedFilters.type) return false;
                     if (selectedFilters.size && selectedFilters.size?.length > 0 && !product.sizes.some(size => selectedFilters.size.includes(size))) return false;
                     if (selectedFilters.color && selectedFilters.color?.length > 0 && !product.variation.some(variant => selectedFilters.color.includes(variant.color))) return false;
-                    if (selectedFilters.brand && selectedFilters.brand?.length > 0 && !selectedFilters.brand.includes(product.brand)) return false;
+                    if (selectedFilters.brand && selectedFilters.brand?.length > 0 && !selectedFilters.brand.includes(product.attributes)) return false;
+                    if (
+                        selectedFilters.attributes &&
+                        selectedFilters.attributes.length > 0 &&
+                        (!Array.isArray(product.attributes) || !selectedFilters.attributes.some(attr => product.attributes.includes(attr)))
+                    ) return false;
                     if (selectedFilters.minPrice && product.price < selectedFilters.minPrice) return false;
                     if (selectedFilters.maxPrice && product.price > selectedFilters.maxPrice) return false;
                     if (selectedFilters.sale && product.sale !== true) return false;
@@ -252,6 +267,26 @@ function fetchProducts() {
                                 </div>
                             `
                     ) : ''}
+                        ${typeof selectedFilters.attributes === 'object' && selectedFilters.attributes?.length ? (
+                        `
+                            ${selectedFilters.attributes.map(item => (
+                            `
+                                    <div class="item flex items-center px-2 py-1 gap-1 bg-linear rounded-full capitalize" data-type="attributes" data-item="${item}">
+                                        <i class='ph ph-x cursor-pointer'></i>
+                                        <span>${item}</span>
+                                    </div>
+                                `
+                        )).join('')}
+                        `
+                    ) : ''}
+                        ${typeof selectedFilters.attributes !== 'object' && selectedFilters.attributes?.length ? (
+                        `
+                                <div class="item flex items-center px-2 py-1 gap-1 bg-linear rounded-full capitalize" data-type="attributes" data-item="${selectedFilters.attributes}">
+                                    <i class='ph ph-x cursor-pointer'></i>
+                                    <span>${selectedFilters.attributes}</span>
+                                </div>
+                            `
+                    ) : ''}
                     </div>
                     <div
                         class="clear-btn flex items-center px-2 py-1 gap-1 rounded-full w-fit border border-red cursor-pointer">
@@ -285,9 +320,18 @@ function fetchProducts() {
                             })
                         }
 
+                        if (dataType === 'attributes') {
+                            let dataItem = btn.getAttribute('data-item')
+                            document.querySelectorAll('.filter-attributes .attributes-item input[type="checkbox"]:checked').forEach(item => {
+                                if (item.id === dataItem) {
+                                    item.checked = false
+                                }
+                            })
+                        }
+
                         handleFiltersChange()
-                        console.log(selectedFilters.type, selectedFilters.size, selectedFilters.color, selectedFilters.brand);
-                        if (!selectedFilters.type && selectedFilters.size?.length === 0 && selectedFilters.color?.length === 0 && selectedFilters.brand?.length === 0) {
+                        console.log(selectedFilters.type, selectedFilters.size, selectedFilters.color, selectedFilters.brand, selectedFilters.attributes);
+                        if (!selectedFilters.type && selectedFilters.size?.length === 0 && selectedFilters.color?.length === 0 && selectedFilters.brand?.length === 0 && selectedFilters.attributes?.length === 0) {
                             listFiltered.innerHTML = ''
                         }
                     })
@@ -301,6 +345,7 @@ function fetchProducts() {
                     document.querySelectorAll('.filter-size .active')?.forEach(item => item.classList.remove('active'))
                     document.querySelectorAll('.filter-color .active')?.forEach(item => item.classList.remove('active'))
                     document.querySelectorAll('.filter-brand .brand-item input[type="checkbox"]:checked').forEach(item => item.checked = false)
+                    document.querySelectorAll('.filter-attributes .attributes-item input[type="checkbox"]:checked').forEach(item => item.checked = false)
                     if (document.querySelector('.check-sale input[type="checkbox"]:checked')) {
                         document.querySelector('.check-sale input[type="checkbox"]:checked').checked = false
                     }
@@ -341,7 +386,9 @@ function fetchProducts() {
             const sizeItems = document.querySelectorAll('.filter-size .size-item')
             const colorItems = document.querySelectorAll('.filter-color .color-item')
             const brandItems = document.querySelectorAll('.filter-brand .brand-item')
+            const attributesItems = document.querySelectorAll('.filter-attributes .attributes-item')
             const checkboxBrandItems = document.querySelectorAll('.filter-brand .brand-item input[type="checkbox"]')
+            const checkboxAttributesItems = document.querySelectorAll('.filter-attributes .attributes-item input[type="checkbox"]')
             const checkSale = document.querySelector('.check-sale input')
 
             // sort product
@@ -432,13 +479,27 @@ function fetchProducts() {
                 }
             })
 
+            attributesItems.forEach(item => {
+                if (item.querySelector('.number')) {
+                    item.querySelector('.number').innerHTML = productsData.filter(product => product.attributes === item.getAttribute('data-item')).length
+                }
+            })
+
             checkboxBrandItems.forEach(item => {
+                item.addEventListener('change', handleFiltersChange);
+            })
+
+            checkboxAttributesItems.forEach(item => {
                 item.addEventListener('change', handleFiltersChange);
             })
 
             // shop-filter-options.html
             if (document.querySelector('.filter-brand select')) {
                 document.querySelector('.filter-brand select').addEventListener('change', handleFiltersChange)
+            }
+
+            if (document.querySelector('.filter-attributes select')) {
+                document.querySelector('.filter-attributes select').addEventListener('change', handleFiltersChange)
             }
 
             rangeInput.forEach(input => {
