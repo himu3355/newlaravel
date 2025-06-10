@@ -3,6 +3,21 @@
 
 @section('extends-header')
 
+@section('extra-css')
+<style>
+    @media (min-width: 1024px) {
+        .product-item:hover.grid-type .product-main .product-infor .product-name {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .product-item:hover.grid-type .product-main .product-infor .product-price-block {
+            transform: translateY(0);
+        }
+    }
+</style>
+@endsection
+
             <!-- Slider -->
 @if(count($banners)>0)
             <div class="slider-block toys-kid 2xl:h-[760px] xl:h-[680px] lg:h-[580px] md:h-[460px] sm:h-[400px] h-[400px] w-full mt-[30px]">

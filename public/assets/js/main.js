@@ -1599,7 +1599,7 @@ const createProductItem = (product) => {
                     ${productImages}
                 </div>
                 ${product.sale ? (`
-                  <div class="countdown-time-block py-1.5 flex items-center justify-center">
+                  <div class="countdown-time-block py-1.5 flex items-center justify-center" style="display:none">
                     <div class="text-xs font-semibold uppercase text-red">
                       <span class='countdown-day'>24</span>
                       <span>D : </span>
@@ -2135,6 +2135,7 @@ const listThreeProduct = document.querySelectorAll(
   .then((data) => {
     products = data.data.map(product => ({
         ...product,
+        action: "add to cart",
         id: parseInt(product.id, 10),
     }));
     console.log(products);
