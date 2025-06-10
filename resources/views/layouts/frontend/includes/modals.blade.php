@@ -394,7 +394,7 @@
                     <div class="progress-line"></div>
                 </div>
             </div>
-            <div class="list-product px-6" style="max-height: calc(100%);"></div>
+            <div class="list-product px-6" style="max-height: calc(100% - 267px);"></div>
             <div class="footer-modal bg-white absolute bottom-0 left-0 w-full">
                 <div class="flex items-center justify-center lg:gap-14 gap-8 px-6 py-4 border-b border-line">
                     <div class="note-btn item flex items-center gap-3 cursor-pointer">

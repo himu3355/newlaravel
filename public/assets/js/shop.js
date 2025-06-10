@@ -106,6 +106,10 @@ function fetchProducts() {
         .then(response => response.json())
         .then(data => {
             productsData = data.data;
+            productsData = productsData.map(pp => {
+                pp.action = "add to cart";
+                return pp
+            });
             // console.log(productsData);
             renderProducts(currentPage, productsData);
             renderPagination(productsData);

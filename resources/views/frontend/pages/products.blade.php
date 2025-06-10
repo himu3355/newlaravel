@@ -302,7 +302,6 @@
                                         <span class="max-lg:hidden">Add To Cart</span>
                                         <i class="ph ph-shopping-bag-open lg:hidden text-xl"></i>
                                     </div>
-
                                 </div>
                             </div>
                             <div class="product-infor mt-4 lg:mb-7">
@@ -338,35 +337,12 @@
 @endsection
 
 @section('extra-js-before-main')
-<script>
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     // Initial load
-    //     var productjson = loadProducts();
-    // });
 
-    // function loadProducts(params = {}) {
-
-    //     fetch('/api/v1/products')
-    //         .then(responce => {
-    //             if (!responce.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-
-    //             return responce.json();
-    //         }).then(data => {
-    //             if (data.success) {
-    //                 return data.data;
-    //             }
-    //         }).catch(error => {
-    //             console.log(error);
-    //         });
-
-    // }
-</script>
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/slick.min.js') }}"></script>
+<script src="{{ asset('assets/js/shop.js') }}"></script>
 @endsection
-
 @section('extra-js')
 
-<script src="{{ asset('assets/js/shop.js') }}"></script>
 
 @endsection
