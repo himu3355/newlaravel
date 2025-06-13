@@ -49,7 +49,8 @@
                         <div class="information mt-5">
                             <div class="heading5">Information</div>
                             <div class="form-checkout mt-5">
-                                <form>
+                                <form action="{{ route('cart.order') }}" method="POST">
+                                    @csrf
                                     <div class="grid sm:grid-cols-2 gap-4 gap-y-5 flex-wrap">
                                         <div class="">
                                             <input class="border-line px-4 py-3 w-full rounded-lg" name="first_name" id="firstName" type="text" placeholder="First Name *" required />

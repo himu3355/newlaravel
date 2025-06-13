@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\AttributeCategoryController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\OrderController;
 use App\Models\Banner;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,8 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
 
     Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
+    
+    Route::post('cart/order', [OrderController::class, 'store'])->name('cart.order');
 
     Route::group(['middleware' => ['role:supper-admin|admin']], function () {
         Route::get('/admin', function () {
