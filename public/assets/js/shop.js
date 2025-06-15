@@ -178,7 +178,7 @@ function fetchProducts() {
                     const brandValue = document.querySelector('.filter-brand select').value;
                     selectedFilters.brand = brandValue !== "null" ? brandValue : [];
                 }
-                
+
                 if (document.querySelector('.filter-attributes select')) {
                     const attributesValue = document.querySelector('.filter-attributes select').value;
                     selectedFilters.attributes = attributesValue !== "null" ? attributesValue : [];

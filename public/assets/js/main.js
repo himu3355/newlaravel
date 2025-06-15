@@ -548,8 +548,9 @@ const handleItemModalCart = () => {
                         </div>
                         <div class="flex items-center justify-between gap-2 mt-3 w-full">
                             <div class="flex items-center text-secondary2 capitalize">
+
                             </div>
-                            <div class="product-price text-title">$${item.price}.00</div>
+                            <div class="product-price text-title">$${item.price*item.quantityPurchase}.00</div>
                         </div>
                     </div>
                 </div>
@@ -3433,7 +3434,7 @@ const handleInforCart = () => {
 
         // Update quantity localStorage
         localStorage.setItem("cartStore", JSON.stringify(cartStore));
-        
+
         // Sync cart to database if logged in
         if (window.LOGGED_IN_USER_ID) {
             syncCartToDatabase(window.LOGGED_IN_USER_ID);
@@ -3451,7 +3452,7 @@ const handleInforCart = () => {
           // Update quantity localStorage
           localStorage.setItem("cartStore", JSON.stringify(cartStore));
 
-            
+
             // Sync cart to database if logged in
             if (window.LOGGED_IN_USER_ID) {
                 syncCartToDatabase(window.LOGGED_IN_USER_ID);
