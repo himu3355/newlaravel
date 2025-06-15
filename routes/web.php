@@ -20,8 +20,8 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
 
     Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
-    
-    Route::post('cart/order', [OrderController::class, 'store'])->name('cart.order');
+
+    Route::post('cart/order', [FrontendController::class, 'storeorder'])->name('cart.order');
 
     Route::group(['middleware' => ['role:supper-admin|admin']], function () {
         Route::get('/admin', function () {
@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('/admin/product', ProductController::class);
         Route::resource('/admin/users', UsersController::class);
         Route::resource('/admin/shipping', ShippingController::class);
+        Route::resource('/admin/orders', OrderController::class);
         // Banner
         Route::resource('banner', BannerController::class);
 

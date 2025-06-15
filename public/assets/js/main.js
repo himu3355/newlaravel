@@ -517,7 +517,7 @@ const handleItemModalCart = () => {
     let totalCart = 0;
 
     cartStore.forEach((item) => {
-      totalCart = Number(totalCart) + Number(item.price)
+      totalCart = Number(totalCart) + Number(item.price*item.quantityPurchase)
 
       // Create prd
       const prdItem = document.createElement("div");

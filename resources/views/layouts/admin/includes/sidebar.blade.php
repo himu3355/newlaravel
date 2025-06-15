@@ -111,6 +111,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('orders.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-truck"></i>
+                        <p>
+                            Orders
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.settings') }}" class="nav-link">
                         <i class="nav-icon fas fa-truck"></i>
                         <p>
