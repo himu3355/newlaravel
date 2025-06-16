@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('/admin/users', UsersController::class);
         Route::resource('/admin/shipping', ShippingController::class);
         Route::resource('/admin/orders', OrderController::class);
+        Route::get('order/pdf/{id}', [OrderController::class, 'pdf'])->name('order.pdf');
         // Banner
         Route::resource('banner', BannerController::class);
 
@@ -71,7 +72,7 @@ Route::middleware('auth')->group(function () {
             Route::put('attributes/{attribute}', [AttributeController::class, 'updateAttribute'])->name('attributes.update');
             Route::delete('attributes/{attribute}', [AttributeController::class, 'destroyAttribute'])->name('attributes.destroy');
 
-        // Settings
+            // Settings
             Route::get('settings', [SettingsController::class, 'settings'])->name('settings');
             Route::post('setting/update', [SettingsController::class, 'settingsUpdate'])->name('settings.update');
         });
@@ -80,7 +81,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::get('/', [FrontendController::class,'home'])->name('home');
+Route::get('/', [FrontendController::class, 'home'])->name('home');
 Route::get('products', [FrontendController::class, 'productList'])->name('products');
 Route::get('product-detail/{product}', [FrontendController::class, 'productDetail'])->name('product-detail');
 Route::get('/products/filter', [FrontendController::class, 'filter'])->name('products.filter');
